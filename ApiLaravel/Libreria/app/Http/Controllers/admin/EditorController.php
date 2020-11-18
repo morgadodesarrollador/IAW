@@ -19,15 +19,12 @@ class EditorController extends Controller
 
     public function libros(){
         $editores = Editor::with('libros')->get();
-<<<<<<< HEAD
         return  response()->json($editores);
     }
+
     public function index(Request $request)
     {
         $editores = Editor::all();
-=======
-        //$editores = Editor::all();
->>>>>>> 8d1f7c657964cb9945e97626ba8738b239e47652
 
         return  response()->json($editores);
     }
