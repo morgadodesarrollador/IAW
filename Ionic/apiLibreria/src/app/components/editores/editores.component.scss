@@ -1,0 +1,10 @@
+
+$ancho:150px;
+img {
+    width: $ancho;
+}
+ion-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

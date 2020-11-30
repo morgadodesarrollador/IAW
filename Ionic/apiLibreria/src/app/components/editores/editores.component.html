@@ -1,0 +1,18 @@
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+<ion-content>
+  <h1>Listado de Editores</h1>
+  <ion-card *ngFor="let editor of editores" >
+    <ion-card-header>
+      <img src ="http://libreria.test/img/editores/{{editor.logo}}">
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>{{ editor.nombre_editorial }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+</ion-content>

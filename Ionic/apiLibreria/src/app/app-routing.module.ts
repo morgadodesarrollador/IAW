@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./components/categorias/categorias.module').then(m => m.CategoriasModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./components/editores/editores.module').then(m => m.EditoresModule)
   }
 ];
 @NgModule({
