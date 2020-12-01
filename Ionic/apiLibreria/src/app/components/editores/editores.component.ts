@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditoresService } from 'src/app/services/editores.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-editores',
@@ -8,8 +9,13 @@ import { EditoresService } from 'src/app/services/editores.service';
 })
 export class EditoresComponent implements OnInit {
   editores: any;
-  constructor(private edService: EditoresService) { }
-
+  constructor(private edService: EditoresService, private navCtrl: NavController) {
+    console.log('ed');
+   }
+  newLibros(){
+    console.log ('libros');
+    this.navCtrl.navigateRoot ('/editores/libros', { animated: true });
+  }
   ngOnInit() {
     this.edService.getEditores()
       .subscribe(data => {

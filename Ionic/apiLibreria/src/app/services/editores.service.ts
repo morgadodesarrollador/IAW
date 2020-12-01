@@ -12,4 +12,9 @@ export class EditoresService {
     return this.http.get('http://libreria.test/index.php/api/admin/editor/')
   }
 
+  public getLibrosEditor($id){
+    return this.http.get('http://libreria.test/index.php/api/admin/editor/')
+  }
+
+
 }

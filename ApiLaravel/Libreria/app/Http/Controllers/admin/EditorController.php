@@ -17,7 +17,8 @@ class EditorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function libros(){
+    public function libros($id){
+    //    echo "-->". $id;
         $editores = Editor::with('libros')->get();
         return  response()->json($editores);
     }
