@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./components/categorias/categorias.module').then(m => m.CategoriasModule)
   },
   {
-    path: '',
+    path: 'editores',
     loadChildren: () => import('./components/editores/editores.module').then(m => m.EditoresModule)
   }
 ];

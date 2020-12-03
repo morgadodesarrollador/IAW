@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ShowlibrosComponent implements OnInit {
   id = null;
   constructor(private activatedRoute: ActivatedRoute) { 
-    console.log('show')
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
   }
 
   ngOnInit() {

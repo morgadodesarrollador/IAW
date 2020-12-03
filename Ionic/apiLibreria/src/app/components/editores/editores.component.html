@@ -7,7 +7,9 @@
     <ion-card-header>
       <img src ="http://libreria.test/img/editores/{{editor.logo}}">
       <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title (click)="newLibros()">
+   <!--   <ion-card-title (click)="newLibros()"> -->
+        <ion-card-title routerLink="libros/{{editor.editorid}}">
+
         
            {{ editor.nombre_editorial }}
   
@@ -19,4 +21,6 @@
       and climb a mountain or spend a week in the woods. Wash your spirit clean.
     </ion-card-content>
   </ion-card>
+  <router-outlet>fasdfsdafsa</router-outlet>
+
 </ion-content>

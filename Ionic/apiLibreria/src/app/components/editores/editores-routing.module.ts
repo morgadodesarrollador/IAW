@@ -5,10 +5,9 @@ import { ShowlibrosComponent } from './showlibros/showlibros.component';
 
 const routes: Routes = [
   {
-    path: 'editores', component: EditoresComponent,
+    path: '', component: EditoresComponent,
     children: [
-      { path: 'libros', component: ShowlibrosComponent }
-
+      { path: 'libros/:id', component: ShowlibrosComponent }
     ]
   }
 ];
