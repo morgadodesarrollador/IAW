@@ -109,7 +109,7 @@ class AuthController extends Controller
         $token = $tokenAuth->accessToken;
         $tokenAuth->token->user_id = $user['user_id'];
         $tokenAuth->token->save();
-        dd ($tokenAuth);
+        //dd ($tokenAuth);
         //generar el token para el usuario
         //el usuario autenticado se guarda en el request
 
