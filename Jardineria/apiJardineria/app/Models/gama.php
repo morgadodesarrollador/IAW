@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class gama extends Model
 {
     use HasFactory;
-    protected $table = 'jamgamasproductos';
+    protected $table = 'gamasproductos';
     protected $primarykey = 'Gama';
 
     public function productos(){

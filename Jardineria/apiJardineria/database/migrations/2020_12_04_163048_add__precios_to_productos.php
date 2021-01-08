@@ -13,7 +13,7 @@ class AddPreciosToProductos extends Migration
      */
     public function up()
     {
-        Schema::table('JAMproductos', function (Blueprint $table) {
+        Schema::table('productos', function (Blueprint $table) {
             $table->double('PrecioVenta',15,2)->after('CantidadEnStock');
             $table->double('PrecioProveedor',15,2)->after('PrecioVenta');
         });
@@ -26,7 +26,7 @@ class AddPreciosToProductos extends Migration
      */
     public function down()
     {
-        Schema::table('JAMproductos', function (Blueprint $table) {
+        Schema::table('productos', function (Blueprint $table) {
             $table->dropColumn('PrecioVenta');
             $table->dropColumn('PrecioProveedor');
         });

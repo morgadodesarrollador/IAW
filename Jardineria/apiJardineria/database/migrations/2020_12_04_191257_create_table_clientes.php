@@ -13,7 +13,7 @@ class CreateTableClientes extends Migration
      */
     public function up()
     {
-        Schema::create('JAMclientes', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->integer('Codigo')->primary();
             $table->string('Nombre', 50);
             $table->string('Telefono',15);
@@ -30,6 +30,6 @@ class CreateTableClientes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('JAMclientes');
+        Schema::dropIfExists('clientes');
     }
 }

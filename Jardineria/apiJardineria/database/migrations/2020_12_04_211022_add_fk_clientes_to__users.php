@@ -13,8 +13,8 @@ class AddFkClientesToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('JAMclientes', function (Blueprint $table) {
-            $table->foreign('userid')->references('id')->on('JAMusers')
+        Schema::table('clientes', function (Blueprint $table) {
+            $table->foreign('userid')->references('user_id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -27,8 +27,8 @@ class AddFkClientesToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('JAMclientes', function (Blueprint $table) {
-            $table->dropForeign('JAMclientes_userid_foreign');
+        Schema::table('clientes', function (Blueprint $table) {
+            $table->dropForeign('clientes_userid_foreign');
 
         });
     }

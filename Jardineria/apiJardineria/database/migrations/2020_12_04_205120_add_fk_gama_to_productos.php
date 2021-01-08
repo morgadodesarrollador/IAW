@@ -13,8 +13,8 @@ class AddFkGamaToProductos extends Migration
      */
     public function up()
     {
-        Schema::table('JAMproductos', function (Blueprint $table) {
-            $table->foreign('Gama')->references('Gama')->on('JAMgamasproductos')
+        Schema::table('productos', function (Blueprint $table) {
+            $table->foreign('Gama')->references('Gama')->on('gamasproductos')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -27,8 +27,8 @@ class AddFkGamaToProductos extends Migration
      */
     public function down()
     {
-        Schema::table('JAMproductos', function (Blueprint $table) {
-            $table->dropForeign('JAMproductos_Gama_foreign');
+        Schema::table('productos', function (Blueprint $table) {
+            $table->dropForeign('productos_Gama_foreign');
         });
     }
 }

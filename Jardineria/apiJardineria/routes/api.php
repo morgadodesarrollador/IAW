@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\GamasProdutosController;
 use App\Http\Controllers\admin\ProdutosController;
 use App\Http\Controllers\admin\UsuariosController;
+use App\Http\Controllers\admin\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('admin/productos', ProdutosController::class);
 Route::resource('admin/gamas', GamasProdutosController::class);
 Route::resource('admin/usuarios', UsuariosController::class);
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'signup']);
 
 

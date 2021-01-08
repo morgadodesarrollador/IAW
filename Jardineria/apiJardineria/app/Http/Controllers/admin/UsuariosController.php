@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\usuario;
+use App\Models\User;
 
 
 class UsuariosController extends Controller
@@ -16,7 +16,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = usuario::with('cliente')->get();
+        $usuarios = User::with('cliente')->get();
         return  response()->json($usuarios);
     }
 

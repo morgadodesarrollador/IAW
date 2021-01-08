@@ -13,7 +13,7 @@ class AddDireccionToClientes extends Migration
      */
     public function up()
     {
-        Schema::table('JAMclientes', function (Blueprint $table) {
+        Schema::table('clientes', function (Blueprint $table) {
             $table->string('Direccion',50)->after('LimiteCredito');
             $table->string('Ciudad',50)->after('Direccion');
             $table->string('Pais',50)->after('Ciudad');
@@ -28,7 +28,7 @@ class AddDireccionToClientes extends Migration
      */
     public function down()
     {
-        Schema::table('JAMclientes', function (Blueprint $table) {
+        Schema::table('clientes', function (Blueprint $table) {
             $table->dropColumn('Direccion');
             $table->dropColumn('Ciudad');
             $table->dropColumn('Pais');

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class producto extends Model
 {
     use HasFactory;
-    protected $table = 'jamproductos';
+    protected $table = 'productos';
     protected $primarykey = 'CodigoProducto';
 
     public function migama(){
