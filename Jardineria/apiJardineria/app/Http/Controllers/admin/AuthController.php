@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         #Paso1-. Validación de los campos del usuario
         $request->validate([
-            'user_id'  => 'required|integer',
+            'id'  => 'required|integer',
             'name'     => 'required|string',
             'surname'  => 'required|string',
             'rol'      => 'required|string',
@@ -28,7 +28,7 @@ class AuthController extends Controller
 
         #Paso3-. Creamos  en la BD el objeto usuario con los campos que vienen en la Request
         $user = new User([
-            'user_id'  => $request->user_id,
+            'id'  => $request->user_id,
             'name'     => $request->name,
             'surname'  => $request->surname,
             'rol'      => $request->rol,
@@ -49,7 +49,7 @@ class AuthController extends Controller
     {
         #Paso1-. Validación de los campos del usuario
         $validator = Validator::make(request()->input(),[
-            'user_id'  => 'required',
+            'id'       => 'required|integer',
             'rol'      => 'required',
             'name'     => 'required',
             'surname'  => 'required',
@@ -64,19 +64,32 @@ class AuthController extends Controller
         }
 
         #Paso3-. Los datos son correctos, encriptamos la contraseña
-        request()->merge(['password' => bcrypt(request('password'))]);
+       // request()->merge(['password' => bcrypt(request('password'))]);
 
         #Paso4-. Creamos y almacenamos en la BD el objeto usuario con los campos que vienen en la Request
-        $user = User::create(request()->input());
 
-        #Paso5-. Podemos devolver el token de ese usuario
-        $success['token']=$user
-            ->createToken('task api', [''])
-            ->accessToken;
+       // $user = New user([
+        $user = User::create(array(
+            'id'       => $request->input('id'),
+            'rol'      => $request->input('rol'),
+            'name'     => $request->input('name'),
+            'surname'  => $request->input('surname'),
+            'email'    => $request->input('email'),
+            'password' => bcrypt($request->password),
+            'image'    => $request->input('image')
+        ));
 
-        #return response()->json($success);
+        $user['id'] = (int)($request->input('id'));
+        $user->save();
 
-        #Paso5-.Devolvemos un mensaje de usuario creado
+        #Paso5-. Creamos el token y lo almacenamos en oauth_access_tokens.
+        $tokenAuth = $user->createToken('task api');
+        $token = $tokenAuth->accessToken;
+        $tokenAuth->token->user_id = $user['id'];
+        $tokenAuth->token->save();
+      //  dd($tokenAuth);
+
+        #Paso5-.Devolvemos un mensaje de usuario creado o devolver el token
         return response()->json([
             'message' => 'Successfully created user!'], 201);
 
@@ -128,7 +141,11 @@ class AuthController extends Controller
         //dd ($tokenAuth);
         $token = $tokenAuth->accessToken;
         #asociamos el user_id del token al user_id del usuario logeado
-        $tokenAuth->token->user_id = $user['user_id'];
+        $tokenAuth->token->user_id = $user['id'];
+
+        #Por defecto la vigencia del token es de un año.
+        #En este caso añadimos 1 semana mas a la vigencia del token después del logeo
+        $tokenAuth->token->expires_at = Carbon::now()->addWeeks(1);
         #almacenamos el token en la tabla oauth_access_tokens
         $tokenAuth->token->save();
 
@@ -141,5 +158,18 @@ class AuthController extends Controller
            'expires_at' => Carbon::parse($tokenAuth->token->expires_at)->toDateTimeString()
        ]);
 
+    }
+
+    public function getUser(Request $request) {
+      //$user = $request->user();
+        $user = Auth::user();
+        echo $user->id;
+       // $usuario = User::where('id', $user->id)->with('cliente')->get();
+        $usuario = User::with('cliente')->find($user->id);
+        return  response()->json([
+            'message' => 'Datos del usuario',
+            'code' => 401,
+            'user' => $usuario
+        ]);
     }
 }

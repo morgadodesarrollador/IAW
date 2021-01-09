@@ -14,9 +14,13 @@ class AddFkClientesToUsers extends Migration
     public function up()
     {
         Schema::table('clientes', function (Blueprint $table) {
-            $table->foreign('userid')->references('user_id')->on('users')
+            $table->foreign('userid')->references('id')->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            /*
+            $table->foreign('userid')->references('user_id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');*/
         });
     }
 
