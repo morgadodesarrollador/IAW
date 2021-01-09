@@ -172,4 +172,12 @@ class AuthController extends Controller
             'user' => $usuario
         ]);
     }
+
+    public function logout(Request $request){
+        //elimina el token de oauth_access_token. 
+        $request->user()->token()->revoke();
+        return  response()->json([
+            'message' => 'Sesión finalizada con éxito',
+        ]);
+    }
 }
