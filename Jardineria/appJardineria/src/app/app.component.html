@@ -1,19 +1,19 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay" menuId="first">
+    <ion-menu contentId="main-content" type="overlay" menuId="first" (click)="getUser()">
       <ion-header>
-        <ion-list-header *ngIf="usuarios" >
-            <img  routerLink="/perfil" src="http://jardineria.test/img/usuarios/{{usuarios[0].image}}">
+        <ion-list-header *ngIf="usuario" >
+            <img  routerLink="/perfil" src="#">
           
-          <div id="datos" color="success" *ngIf="usuarios" >
+          <div id="datos" color="success" *ngIf="usuario" >
             <div id="cliente">
-              <p>{{usuarios[0].cliente.Nombre}}</p>
-              <p>{{usuarios[0].cliente.Ciudad}} ({{usuarios[0].cliente.Pais}})</p>
+              <p>{{ usuario.cliente.Nombre }}</p>
+              <p></p>
             </div>
             <div id="usuario">
-              <p>{{usuarios[0].name}}, {{usuarios[0].surname}}</p> 
-              <p>{{usuarios[0].email}}</p>
-              <p>{{usuarios[0].rol}}</p>
+              <p>{{usuario.name}}</p> 
+              <p>{{ usuario.email }}</p>
+              <p>rol</p>
             </div>    
           </div>
         </ion-list-header>

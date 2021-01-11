@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IUsuario, MsnApiLogin, MsnApiRegister } from '../interfaces/UsuarioInterface';
 
@@ -17,7 +18,10 @@ export class UsuariosService {
     })
   };
   token: string = null;
-  usuario: IUsuario;
+  public usuario: IUsuario;
+  private userStorage = new Subject <IUsuario>();
+  public userStorageObservable = this.userStorage.asObservable();
+
   constructor(private http: HttpClient, private storage: Storage) { }
 
   public getUsuarios(){
@@ -58,7 +62,8 @@ export class UsuariosService {
   async saveUser(user: IUsuario){ 
     this.usuario = user;
     //espero (await) a que se guarde el token en el storage antes de continuar
-    await this.storage.set('usuario', user); 
+    await this.storage.set('usuario', user);
+    this.userStorage.next(this.usuario);
   }
   
 
@@ -80,5 +85,14 @@ export class UsuariosService {
           }
         });
     });
+  }
+
+  getUsuarioStorage(): Promise<IUsuario>{
+    return new Promise<IUsuario> ( resolve => {
+      this.storage.get('usuario')
+        .then (user => {
+          resolve (user);
+        });
+    })
   }
 }

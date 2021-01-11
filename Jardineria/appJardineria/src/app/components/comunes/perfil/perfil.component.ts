@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IUsuario } from 'src/app/interfaces/UsuarioInterface';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-perfil',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  usuario: IUsuario;
+  constructor(private uService: UsuariosService) { }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.usuario = await this.uService.getUsuarioStorage();
+    console.log (this.usuario);
+  }
 
 }

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { GamasService } from './services/gamas.service';
 import { UsuariosService } from './services/usuarios.service';
 import { Router } from '@angular/router';
+import { IUsuario } from './interfaces/UsuarioInterface';
 
 
 @Component({
@@ -16,13 +17,13 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   
   gamas: any;
-  usuarios: any;
+  usuario: IUsuario;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private gamasService: GamasService,
-    private usuariosService: UsuariosService,
+    private uService: UsuariosService,
     private navCtrl: NavController,
     private router: Router
   ) {
@@ -51,18 +52,17 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    /*
-    this.usuariosService.getUsuarios()
-      .subscribe( data => {
-        this.usuarios = data;
-        console.log(this.usuarios);
-    });
-    this.gamasService.getGamas()
-      .subscribe( data => {
-        this.gamas = data;
-        console.log(data)
+  ngOnInit(): void {
+    this.uService.userStorageObservable
+      .subscribe ( data => {
+        this.usuario = data;
+        console.log (this.usuario );
       })
-      */
+    
+  }
+
+  async getUser() {
+      this.usuario = await this.uService.getUsuarioStorage();
+      console.log (this.usuario);
   }
 }
