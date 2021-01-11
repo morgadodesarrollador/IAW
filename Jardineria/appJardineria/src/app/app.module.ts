@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComunesModule } from './components/comunes/comunes.module';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +23,8 @@ import { ComunesModule } from './components/comunes/comunes.module';
     AppRoutingModule,
     HttpClientModule,
     ComunesModule,
+    FormsModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

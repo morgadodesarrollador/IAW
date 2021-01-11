@@ -3,12 +3,14 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PortadaComponent } from './components/comunes/portada/portada.component';
 import { PerfilComponent } from './components/comunes/perfil/perfil.component';
 import { LoginComponent } from './components/comunes/login/login.component';
+import { SignupComponent } from './components/comunes/signup/signup.component';
 
 const routes: Routes = [ 
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: PortadaComponent, outlet: 'primary'},
   { path: 'perfil', component: PerfilComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignupComponent},
   {
     path: 'gamas', outlet: 'primary',
     loadChildren: () => import('./components/gamas/gamas.module').then( m => m.GamasModule)
@@ -17,7 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes,  { preloadingStrategy: PreloadAllModules , useHash: true, enableTracing: true})
+    RouterModule.forRoot(routes,  { preloadingStrategy: PreloadAllModules , useHash: true, enableTracing: false})
   ],
   exports: [RouterModule]
 })

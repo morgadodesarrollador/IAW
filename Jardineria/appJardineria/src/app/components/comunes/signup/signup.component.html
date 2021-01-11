@@ -1,0 +1,46 @@
+<ion-header>
+  <app-header seccion="Registro"></app-header>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <h2>Registro</h2>
+    </ion-item>
+  
+    <ion-card-content>
+      <form (ngSubmit)="registro(fRegistro)" #fRegistro="ngForm"> 
+              <ion-item>
+                <ion-label position="floating">Id</ion-label>
+                <ion-input required name="id" type="number" [(ngModel)]="registerUser.id"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input required name="email" type="email" [(ngModel)]="registerUser.email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input required name="password" type="password" [(ngModel)]="registerUser.password"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input required name="name" type="text" [(ngModel)]="registerUser.name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Apellidos</ion-label>
+                <ion-input required name="surname" type="text" [(ngModel)]="registerUser.surname"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Rol</ion-label>
+                <ion-input required name="rol" type="text" [(ngModel)]="registerUser.rol"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Imagen</ion-label>
+                <ion-input  name="image" type="text" [(ngModel)]="registerUser.image"></ion-input>
+              </ion-item>
+            <ion-button expand="full" type="submit" color="tertiary">Sig Up</ion-button>
+       </form>
+      
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>

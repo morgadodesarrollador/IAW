@@ -1,5 +1,7 @@
 {
   "name": "appJardineria",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

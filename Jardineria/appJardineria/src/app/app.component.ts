@@ -52,6 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    /*
     this.usuariosService.getUsuarios()
       .subscribe( data => {
         this.usuarios = data;
@@ -62,5 +63,6 @@ export class AppComponent implements OnInit {
         this.gamas = data;
         console.log(data)
       })
+      */
   }
 }
