@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Input('seccion') seccion: string;
-
+  
   constructor() { }
 
-  ngOnInit() {}
-
+  ngOnInit(): void { }
 }
