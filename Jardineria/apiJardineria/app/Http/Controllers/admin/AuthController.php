@@ -5,9 +5,12 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 
 class AuthController extends Controller
@@ -15,6 +18,7 @@ class AuthController extends Controller
     public function signup1(Request $request)
     {
         #Paso1-. Validación de los campos del usuario
+        /*
         $request->validate([
             'id'  => 'required|integer',
             'name'     => 'required|string',
@@ -24,6 +28,7 @@ class AuthController extends Controller
             'password' => 'required|string',
             'image'    => 'required|string',
         ]);
+        */
         #Paso2
 
         #Paso3-. Creamos  en la BD el objeto usuario con los campos que vienen en la Request
@@ -37,18 +42,19 @@ class AuthController extends Controller
             'image'    => $request->image,
         ]);
         #Paso4-. Almacenamos el usuario en la tabla User
-        $user->save();
+        //$user->save();
 
         #Paso5-. Devolvemos la respuesta con un mensaje
         return response()->json([
+            'user' => $request->all(),
             'message' => 'Successfully created user!'], 201);
 
     }
 
+
     public function signup(Request $request)
     {
-        #Paso1-. Validación de los campos del usuario
-        $validator = Validator::make(request()->input(),[
+        $rules = [
             'id'       => 'required|integer',
             'rol'      => 'required',
             'name'     => 'required',
@@ -56,11 +62,16 @@ class AuthController extends Controller
             'email'    => 'required',
             'password' => 'required',
             'image'    => 'required',
-        ]);
-
-        #Paso2-. Se devuelven como errores los campos que no verifique los requisitos
+        ];
+        #Paso1-. Validación de los campos del usuario
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
+//        dd($validator->errors());
         if ($validator->fails()){
-            return response()->json(['error'=> $validator->errors()], 401);
+            return response()->json([
+                'status' => 'error',
+                'errors'=> $validator->errors()
+            ], 200);
         }
 
         #Paso3-. Los datos son correctos, encriptamos la contraseña
@@ -69,6 +80,7 @@ class AuthController extends Controller
         #Paso4-. Creamos y almacenamos en la BD el objeto usuario con los campos que vienen en la Request
 
        // $user = New user([
+
         $user = User::create(array(
             'id'       => $request->input('id'),
             'rol'      => $request->input('rol'),
@@ -91,6 +103,7 @@ class AuthController extends Controller
 
         #Paso5-.Devolvemos un mensaje de usuario creado o devolver el token
         return response()->json([
+            'status' => 'success',
             'message' => 'Successfully created user!'], 201);
 
     }
@@ -124,6 +137,7 @@ class AuthController extends Controller
         #se chequea en la tabla User sis existe el email/password
         if(!Auth::attempt($credentials)){
             return response()->json([
+                'status' => 'error',
                 'message' => 'Credenciales Incorrectas', 'code' => 401
             ]);
         }
@@ -152,10 +166,17 @@ class AuthController extends Controller
         #Paso6-. Generar el token y las características necesarias para el usuario
         # datos necesarios para que el usuario realize las consultas porsteriores a la REST API
 
-       return response()->json([
-           'access_token' => $token,
-           'token_type' => 'Bearer ',
-           'expires_at' => Carbon::parse($tokenAuth->token->expires_at)->toDateTimeString()
+        $usuario = User::with('cliente')->find($user->id);
+
+        return response()->json([
+           'status' => 'success',
+           'user' => $usuario,
+           'token' => [
+                'access_token' => $token,
+                'token_type' => 'Bearer ',
+                'expires_at' => Carbon::parse($tokenAuth->token->expires_at)->toDateTimeString()
+           ]
+
        ]);
 
     }
@@ -167,6 +188,7 @@ class AuthController extends Controller
        // $usuario = User::where('id', $user->id)->with('cliente')->get();
         $usuario = User::with('cliente')->find($user->id);
         return  response()->json([
+            'status' => 'success',
             'message' => 'Datos del usuario',
             'code' => 401,
             'user' => $usuario
@@ -174,7 +196,7 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request){
-        //elimina el token de oauth_access_token. 
+        //elimina el token de oauth_access_token.
         $request->user()->token()->revoke();
         return  response()->json([
             'message' => 'Sesión finalizada con éxito',
