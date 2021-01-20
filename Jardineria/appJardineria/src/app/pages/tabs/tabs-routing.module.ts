@@ -12,7 +12,6 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       { path: '', loadChildren: () => import('../../components/comunes/comunes.module').then(m => m.ComunesModule) },
-      { path: '', loadChildren: () => import('../../components/comunes/comunes.module').then(m => m.ComunesModule) },
       { path: 'gamas', loadChildren: () => import('../../components/gamas/gamas.module').then(m => m.GamasModule)   }
     ]
   }

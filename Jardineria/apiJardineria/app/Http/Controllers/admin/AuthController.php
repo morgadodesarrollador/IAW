@@ -91,11 +91,16 @@ class AuthController extends Controller
             'image'    => $request->input('image')
         ));
 
+       // dd($user);
+
         $user['id'] = (int)($request->input('id'));
         $user->save();
 
         #Paso5-. Creamos el token y lo almacenamos en oauth_access_tokens.
         $tokenAuth = $user->createToken('task api');
+      //  dd($tokenAuth);
+
+
         $token = $tokenAuth->accessToken;
         $tokenAuth->token->user_id = $user['id'];
         $tokenAuth->token->save();
@@ -132,6 +137,8 @@ class AuthController extends Controller
 
         #Paso2-. Creamos el array de credenciales --> ['email => $email, 'password'=>$password] con el método Auth::attemp
         $credentials = request(['email', 'password']);
+
+        //dd($credentials);
 
         #Paso3-. Verificamos si las credenciales no son válidas se devuelve un mensaje de error
         #se chequea en la tabla User sis existe el email/password
@@ -182,9 +189,9 @@ class AuthController extends Controller
     }
 
     public function getUser(Request $request) {
+
       //$user = $request->user();
         $user = Auth::user();
-        echo $user->id;
        // $usuario = User::where('id', $user->id)->with('cliente')->get();
         $usuario = User::with('cliente')->find($user->id);
         return  response()->json([

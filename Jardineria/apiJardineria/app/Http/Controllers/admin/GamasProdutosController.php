@@ -16,8 +16,14 @@ class GamasProdutosController extends Controller
      */
     public function index()
     {
-        $gamas = gama::with('productos')->get();
-        return  response()->json($gamas);
+       // $gamas = gama::with('productos')->get();
+        $gamas = gama::all();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Gamas de la Jardinería',
+            'code' => 401,
+            'gamas' => $gamas
+        ]);
     }
 
     /**

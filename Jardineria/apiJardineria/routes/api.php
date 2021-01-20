@@ -27,16 +27,20 @@ Route::resource('admin/usuarios', UsuariosController::class);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'signup']);
+/*
+Route::get('user', [AuthController::class, 'getUser'])
+    ->middleware('auth:api');
 
-//Route::get('user', [AuthController::class, 'getUser'])
-//    ->middleware('auth:api');
-
-//Route::post('logout', [AuthController::class, 'logout'])
-//    ->middleware('auth:api');
+Route::post('logout', [AuthController::class, 'logout'])
+    ->middleware('auth:api');
+*/
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'getUser']);
+
+    Route::resource('admin/gamas', GamasProdutosController::class);
+
 });
 
 
