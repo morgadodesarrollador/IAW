@@ -6,7 +6,7 @@ import { LoginComponent } from './components/comunes/login/login.component';
 import { SignupComponent } from './components/comunes/signup/signup.component';
 
 const routes: Routes = [ 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'tabs', pathMatch: 'full' },
   { path: 'home', component: PortadaComponent, outlet: 'primary'},
   { path: 'perfil', component: PerfilComponent },
   { path: 'login', component: LoginComponent},
@@ -14,7 +14,12 @@ const routes: Routes = [
   {
     path: 'gamas', outlet: 'primary',
     loadChildren: () => import('./components/gamas/gamas.module').then( m => m.GamasModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   }
+
 ];
 
 @NgModule({

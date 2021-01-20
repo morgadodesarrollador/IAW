@@ -8,6 +8,39 @@
     </ion-item>
   
     <ion-card-content>
+      <ion-grid *ngIf="usuario">
+        <ion-row>
+          <ion-col size="6">
+            <ion-label>Nombre </ion-label>
+            <h4>{{ usuario.name }} {{ usuario.surname }}</h4>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Email </ion-label>
+            <h4>{{ usuario.email }} </h4>
+          </ion-col>
+          <ion-col size="2">
+            <ion-label>Rol </ion-label>
+            <h4>{{ usuario.rol }} </h4>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <h3>{{ usuario.cliente.Nombre }}</h3>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Crédito </ion-label>
+            <h3>{{ usuario.cliente.LimiteCredito }}</h3>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Pais </ion-label>
+            <h3>{{ usuario.cliente.Ciudad }} ({{ usuario.cliente.Pais }})</h3>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Teléfono </ion-label>
+            <h3>{{ usuario.cliente.Telefono }}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
       
     </ion-card-content>
   </ion-card>

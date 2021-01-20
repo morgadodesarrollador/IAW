@@ -3,5 +3,12 @@
 </ion-header>
 <ion-content>
   <h3>Gamas1 de productos</h3>
+  <ion-list>
+    <ion-item  *ngFor="let g of gamas" >
+      <ion-label>
+        {{ g.Gama }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
   
 </ion-content>

@@ -13,8 +13,26 @@ export class PerfilComponent implements OnInit {
   constructor(private uService: UsuariosService) { }
 
   async ngOnInit() {
+    //this.usuario = await this.uService.getUsuarioStorage();
+   // console.log (this.usuario);
+
+    this.uService.userStorageObservable
+      .subscribe ( data => {
+        this.usuario = data;
+        console.log (this.usuario );
+      })
+  }
+ async ionViewWillEnter (){
+    console.log('entra');
+    /*
+    this.uService.userStorageObservable
+      .subscribe ( data => {
+        this.usuario = data;
+        console.log (this.usuario );
+      })
+  */
     this.usuario = await this.uService.getUsuarioStorage();
-    console.log (this.usuario);
+    console.log(this.usuario);
   }
 
 }

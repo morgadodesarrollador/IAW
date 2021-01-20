@@ -52,6 +52,13 @@ export class AppComponent implements OnInit {
 
   }
 
+  ionViewWillEnter (){
+    this.uService.userStorageObservable
+      .subscribe ( data => {
+        this.usuario = data;
+        console.log (this.usuario );
+      })
+  }
   ngOnInit(): void {
     this.uService.userStorageObservable
       .subscribe ( data => {

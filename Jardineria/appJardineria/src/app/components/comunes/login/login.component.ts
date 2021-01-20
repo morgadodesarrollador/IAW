@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
     if ( peticion.status == 'success' ){
       // navegar al home
-      this.navCtrl.navigateRoot('home', { animated: true } );
+      this.navCtrl.navigateRoot('tabs', { animated: true } );
     }else {
       // mostrar alerta al usuario que indique el error
       this.uiService.alertaInformativa('Usuario/Password no son válidos');

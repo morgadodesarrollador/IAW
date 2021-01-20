@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Subject } from 'rxjs';
@@ -11,12 +10,7 @@ const URL = environment.url;
   providedIn: 'root'
 })
 export class UsuariosService {
-  httpOptions = {
-    headers: new HttpHeaders({
-     'Content-Type': 'application/json',
-    //  'Content-Type': 'multipart/form-data'
-    })
-  };
+  
   token: string = null;
   public usuario: IUsuario;
   private userStorage = new Subject <IUsuario>();
@@ -61,7 +55,6 @@ export class UsuariosService {
 
   async saveUser(user: IUsuario){ 
     this.usuario = user;
-    //espero (await) a que se guarde el token en el storage antes de continuar
     await this.storage.set('usuario', user);
     this.userStorage.next(this.usuario);
   }
@@ -93,6 +86,19 @@ export class UsuariosService {
         .then (user => {
           resolve (user);
         });
-    })
+    });
+  }
+  getToken(): Promise<any>{
+    return new Promise<any> (resolve => {
+      this.storage.get('token')
+        .then ( token => {
+          resolve(token);
+        });
+    });
+  }
+
+  async getPerfil(){
+    const token = await this.getToken();
+    console.log (token);
   }
 }

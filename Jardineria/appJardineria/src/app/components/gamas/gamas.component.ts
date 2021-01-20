@@ -8,18 +8,26 @@ import { GamasService } from 'src/app/services/gamas.service';
   styleUrls: ['./gamas.component.scss'],
 })
 export class GamasComponent implements OnInit {
-  gama: any; 
+  gamas: any;
+  gama: any;
   constructor(private gamasService: GamasService, private route: ActivatedRoute ) {
-    console.log('gamas');
-    this.gamasService.getGamas()
-      .subscribe( data => {
-        console.log(data);
-      })
+    this.gama = this.route.snapshot.paramMap.get('id');
+    console.log (this.gama);
+    console.log(this.gamasService.getGamas());
    }
 
   ngOnInit() {
     this.gama = this.route.snapshot.paramMap.get('id');
-    console.log(this.gama);
+    console.log (this.gama);
+    console.log(this.gamasService.getGamas());
   }
+  
+  async ionViewWillEnter (){
+    
+    let respuesta = await this.gamasService.getGamas();
+    this.gamas = respuesta['gamas'];
+    console.log(this.gamas);
+  }
+
 
 }
