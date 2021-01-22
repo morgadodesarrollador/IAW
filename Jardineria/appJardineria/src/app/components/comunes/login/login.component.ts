@@ -12,7 +12,7 @@ import { UiServiceService } from '../../../services/ui-service.service';
 export class LoginComponent implements OnInit {
 
   loginUser = {
-    email: 'jose@gmail.com',
+    email: 'pepe@gmail.com',
     password: '1234'
   };
 
@@ -23,15 +23,14 @@ export class LoginComponent implements OnInit {
   }
 
   async login(fLogin: NgForm){
+    console.log(this.loginUser);
     if (fLogin.invalid) { return; }
-    // recordemos que 'peticion' es una PROMESA que tendrá valor true/false
+    // recordemos que 'peticion' es una PROMESA 
     const peticion = await this.uService.login(this.loginUser.email, this.loginUser.password);
-
     if ( peticion.status == 'success' ){
       // navegar al home
       this.navCtrl.navigateRoot('tabs', { animated: true } );
     }else {
-      // mostrar alerta al usuario que indique el error
       this.uiService.alertaInformativa('Usuario/Password no son válidos');
     }
   }

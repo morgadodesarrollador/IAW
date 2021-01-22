@@ -36,7 +36,6 @@ export class SignupComponent implements OnInit {
     const peticion = await this.uService.registro( this.registerUser );
 
     if ( peticion.status == 'success' ){
-      console.log(peticion);
       this.uiService.alertaInformativa( peticion.message );
       this.navCtrl.navigateRoot('login', { animated: true });
     }else {

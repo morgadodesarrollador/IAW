@@ -28,22 +28,20 @@ export class UsuariosService {
     console.log (ruta, data);
     return new Promise( resolve => {
       this.http.post<MsnApiLogin>(ruta, data)
-        .subscribe( respuesta => {
-          //hemos de hacer el TIPADO con INTERFACES
+        .subscribe( respuesta => {          //hemos de hacer el TIPADO con INTERFACES
           if (respuesta.status == 'success'){
             this.saveToken(respuesta.token.access_token);
             this.saveUser(respuesta.user);
             //si llega aquí la promesa devuelve true indicando que todo ha sido OK
             resolve(respuesta);
           } else {
-            this.token = null;
-            this.storage.clear();
-            //la promesa devuelve false indicando que ha habido un ERROR
-            resolve (respuesta);
+              this.token = null;
+              this.storage.clear();
+              //la promesa devuelve false indicando que ha habido un ERROR
+              resolve (respuesta);
           }
-      })
-    })
-    
+      });
+    });
   }
   
   //devuelve una promesa (async)
@@ -60,14 +58,14 @@ export class UsuariosService {
   }
   
 
-  registro(usuario: IUsuario): Promise<MsnApiRegister>{
+  registro (usuario: IUsuario): Promise<MsnApiRegister>{
 
     const ruta = `${ URL }/api/register`;
     const data = usuario;
     console.log (ruta, data);
 
     return new Promise ( resolve => {
-      this.http.post<MsnApiRegister>(ruta, data, this.httpOptions)
+      this.http.post<MsnApiRegister>(ruta, data)
         .subscribe (respuesta => {
           if (respuesta.status == 'success'){
             resolve(respuesta)

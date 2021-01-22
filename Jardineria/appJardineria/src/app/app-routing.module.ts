@@ -6,8 +6,8 @@ import { LoginComponent } from './components/comunes/login/login.component';
 import { SignupComponent } from './components/comunes/signup/signup.component';
 
 const routes: Routes = [ 
-  { path: '', redirectTo: 'tabs', pathMatch: 'full' },
-  { path: 'home', component: PortadaComponent, outlet: 'primary'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: PortadaComponent},
   { path: 'perfil', component: PerfilComponent },
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
