@@ -19,6 +19,11 @@ export interface IUsuario {
     cliente?: ICliente;
 }
 
+export interface ILogin {
+    email: string;
+    password: string;
+}
+
 export interface MsnApiRegister {
     status?: string;
     message?: string;

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UsuariosService } from '../../../services/usuarios.service';
 import { NavController } from '@ionic/angular';
 import { UiServiceService } from '../../../services/ui-service.service';
+import { ILogin } from '../../../interfaces/UsuarioInterface';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { UiServiceService } from '../../../services/ui-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginUser = {
+  loginUser: ILogin = {
     email: 'pepe@gmail.com',
     password: '1234'
   };
@@ -26,13 +27,15 @@ export class LoginComponent implements OnInit {
     console.log(this.loginUser);
     if (fLogin.invalid) { return; }
     // recordemos que 'peticion' es una PROMESA 
-    const peticion = await this.uService.login(this.loginUser.email, this.loginUser.password);
+    const peticion = await this.uService.login(this.loginUser);
+
     if ( peticion.status == 'success' ){
       // navegar al home
       this.navCtrl.navigateRoot('tabs', { animated: true } );
     }else {
       this.uiService.alertaInformativa('Usuario/Password no son válidos');
     }
+    
   }
 
   ngOnInit() {}

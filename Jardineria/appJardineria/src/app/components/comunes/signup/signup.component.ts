@@ -11,7 +11,6 @@ import { IUsuario } from '../../../interfaces/UsuarioInterface';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-
   registerUser: IUsuario = {
     id: 1,
     name: 'antonio',
@@ -29,12 +28,12 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {}
 
+  
+  
   async registro(fRegistro) {
 
     if (fRegistro.invalid) { return; }
-
     const peticion = await this.uService.registro( this.registerUser );
-
     if ( peticion.status == 'success' ){
       this.uiService.alertaInformativa( peticion.message );
       this.navCtrl.navigateRoot('login', { animated: true });
@@ -44,7 +43,5 @@ export class SignupComponent implements OnInit {
     }
     
   }
-
- 
 
 }

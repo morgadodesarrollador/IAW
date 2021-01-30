@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { IUsuario, MsnApiLogin, MsnApiRegister } from '../interfaces/UsuarioInterface';
+import { IUsuario, ILogin, MsnApiLogin, MsnApiRegister } from '../interfaces/UsuarioInterface';
 
 const URL = environment.url;
 @Injectable({
@@ -22,13 +22,14 @@ export class UsuariosService {
     return this.http.get('http://jardineria.test/api/admin/usuarios');
   }
 
-  login (email: string, password: string): Promise<MsnApiLogin>{
-    const data = { email, password };
+  login (loginUser: ILogin): Promise<MsnApiLogin>{
+    const data = loginUser;
     const ruta = `${ URL }/api/login`;
     console.log (ruta, data);
     return new Promise( resolve => {
       this.http.post<MsnApiLogin>(ruta, data)
-        .subscribe( respuesta => {          //hemos de hacer el TIPADO con INTERFACES
+        .subscribe( respuesta => {        
+          console.log(respuesta);
           if (respuesta.status == 'success'){
             this.saveToken(respuesta.token.access_token);
             this.saveUser(respuesta.user);
@@ -57,8 +58,8 @@ export class UsuariosService {
     this.userStorage.next(this.usuario);
   }
   
-
   registro (usuario: IUsuario): Promise<MsnApiRegister>{
+    console.log(usuario);
 
     const ruta = `${ URL }/api/register`;
     const data = usuario;

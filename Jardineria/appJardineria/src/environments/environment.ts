@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://jardineria.test'
+  url: 'http://jardineria.test',
+  //url: 'http://jardineria.joseantoniomorgado.es/index.php/'
 };
 
 /*
