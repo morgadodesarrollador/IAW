@@ -193,7 +193,7 @@ class AuthController extends Controller
 
       //$user = $request->user();
         $user = Auth::user();
-       // $usuario = User::where('id', $user->id)->with('cliente')->get();
+        $usuario = User::where('id', $user->id)->with('cliente')->get();
         $usuario = User::with('cliente')->find($user->id);
         return  response()->json([
             'status' => 'success',

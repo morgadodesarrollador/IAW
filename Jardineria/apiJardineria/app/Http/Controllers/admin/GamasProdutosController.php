@@ -14,6 +14,16 @@ class GamasProdutosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getProductos($id){
+        $productos = Gama::with('productos')->where('Gama', '=', $id)->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Productos de la Gama '. $id ,
+            'code' => 401,
+            'gamas' => $productos
+        ]);
+    }
+
     public function index()
     {
        // $gamas = gama::with('productos')->get();

@@ -10,7 +10,7 @@ const routes: Routes = [
         
       ]
   },
-  {path: 'productos/:id', component: ProductosgamaComponent, outlet:'primary' }
+  {path: 'productos/:id', component: ProductosgamaComponent}
   
 ];
 

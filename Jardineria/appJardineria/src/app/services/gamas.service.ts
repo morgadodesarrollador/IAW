@@ -11,6 +11,10 @@ export class GamasService {
 
   constructor(private http: HttpClient, private uService: UsuariosService) { }
 
+  async getProductosGama(id):Promise<any>{
+    const token = await this.uService.getToken();
+    const ruta = `${ URL }/api/admin/gamas`;
+  }
   async getGamas(): Promise<any>{
     const token = await this.uService.getToken();
     const ruta = `${ URL }/api/admin/gamas`;

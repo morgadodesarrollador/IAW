@@ -29,5 +29,9 @@ export class GamasComponent implements OnInit {
     console.log(this.gamas);
   }
 
+  productos (gama){
+    console.log (gama);
+  }
+
 
 }

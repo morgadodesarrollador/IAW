@@ -46,7 +46,6 @@ class RouteServiceProvider extends ServiceProvider
                     require base_path('routes/libros/filter.php');
                     require base_path('routes/editores/filter.php');
                     require base_path('routes/api.php');
-
                   }
                 );
 

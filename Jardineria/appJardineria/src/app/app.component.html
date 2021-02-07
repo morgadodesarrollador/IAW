@@ -4,8 +4,7 @@
       <ion-header>
         <ion-list-header *ngIf="usuario" >
             <img  routerLink="/perfil" src="#">
-          
-          <div id="datos" color="success" *ngIf="usuario" >
+          <div id="datos" color="success" >
             <div id="cliente">
               <p>{{ usuario.cliente.Nombre }}</p>
               <p></p>
@@ -13,7 +12,7 @@
             <div id="usuario">
               <p>{{usuario.name}}</p> 
               <p>{{ usuario.email }}</p>
-              <p>rol</p>
+              <p>{{ usuario.rol}}</p>
             </div>    
           </div>
         </ion-list-header>

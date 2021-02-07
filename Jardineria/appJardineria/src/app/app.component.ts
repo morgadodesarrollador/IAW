@@ -52,14 +52,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  ionViewWillEnter (){
-    this.uService.userStorageObservable
-      .subscribe ( data => {
-        this.usuario = data;
-        console.log (this.usuario );
-      })
-  }
-  ngOnInit(): void {
+  async ionViewWillEnter (){
+    console.log('datos de usuario');
+  //  this.usuario = await this.uService.getUsuarioStorage();
     this.uService.userStorageObservable
       .subscribe ( data => {
         this.usuario = data;
@@ -67,9 +62,19 @@ export class AppComponent implements OnInit {
       })
     
   }
+  async ngOnInit() {
+    //this.usuario = await this.uService.getUsuarioStorage();
+  
+    this.uService.userStorageObservable
+      .subscribe ( data => {
+        this.usuario = data;
+        console.log (this.usuario );
+      })
+    }
+  
 
   async getUser() {
-      this.usuario = await this.uService.getUsuarioStorage();
+     // this.usuario = await this.uService.getUsuarioStorage();
       console.log (this.usuario);
   }
 }

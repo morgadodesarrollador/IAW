@@ -34,12 +34,14 @@ Route::get('user', [AuthController::class, 'getUser'])
 Route::post('logout', [AuthController::class, 'logout'])
     ->middleware('auth:api');
 */
+Route::post('gamas', [GamasProdutosController::class, 'gamas']);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'getUser']);
 
-    Route::resource('admin/gamas', GamasProdutosController::class);
+  //  Route::get('admin/gamas', [GamasProdutosController::class, 'index']);
+  //  Route::get('admin/gamas/productos', [GamasProdutosController::class,'getProductos']);
 
 });
 
