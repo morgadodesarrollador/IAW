@@ -20,7 +20,7 @@ class GamasProdutosController extends Controller
             'status' => 'success',
             'message' => 'Productos de la Gama '. $id ,
             'code' => 401,
-            'gamas' => $productos
+            'data' => $productos
         ]);
     }
 
@@ -32,7 +32,7 @@ class GamasProdutosController extends Controller
             'status' => 'success',
             'message' => 'Gamas de la Jardinería',
             'code' => 401,
-            'gamas' => $gamas
+            'data' => $gamas
         ]);
     }
 

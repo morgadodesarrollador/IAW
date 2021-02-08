@@ -9,16 +9,21 @@ import { PortadaComponent } from './portada/portada.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, PortadaComponent, PerfilComponent, LoginComponent, SignupComponent],
-  exports: [HeaderComponent, PortadaComponent, PerfilComponent, LoginComponent, SignupComponent],
+  declarations: [
+    HeaderComponent, PortadaComponent, PerfilComponent, 
+    LoginComponent, SignupComponent, BreadcrumbComponent],
+  exports: [
+    HeaderComponent, PortadaComponent, PerfilComponent, 
+    LoginComponent, SignupComponent, BreadcrumbComponent],
   imports: [
     CommonModule,
     IonicModule,
     ComunesRoutingModule,
-    FormsModule    
+    FormsModule
   ]
 })
 export class ComunesModule { }

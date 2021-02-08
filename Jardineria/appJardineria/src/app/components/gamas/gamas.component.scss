@@ -1,7 +1,19 @@
 ion-content {
     padding: 10px;
 }
-
+ion-list {
+    display: flex;
+    flex-flow: row wrap;
+}
+ion-card {
+    width: 47%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+}
+ion-card-header img{
+    height: 100px;
+}
 ion-router-outlet {
     height: 400px;
 }

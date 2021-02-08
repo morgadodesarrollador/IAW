@@ -1,0 +1,19 @@
+ion-list {
+    display: flex;
+    flex-flow: row wrap;
+}
+ion-card {
+    width: 47%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+}
+ion-grid span {
+    padding: 5px;
+}
+ion-grid ion-item#bread {
+    text-align: right;
+}
+ion-grid ion-item#bread span.active {
+    color: blue;
+}

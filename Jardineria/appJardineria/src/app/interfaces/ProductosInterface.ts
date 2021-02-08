@@ -32,7 +32,7 @@ export interface MsnApiProductos {
     errors?: string;
     code?: number;
 //    data?: IGama[] | IProducto[];
-    data?: IProducto[] | IProducto;
+    data?: IProducto[] | IProducto | IGama | IGama[];
 }
 
 

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { GamasRoutingModule } from './gamas-routing.module';
 import { GamasComponent } from './gamas.component';
 import { ProductosgamaComponent } from './productosgama/productosgama.component';
-
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [GamasComponent, ProductosgamaComponent],
@@ -15,7 +15,7 @@ import { ProductosgamaComponent } from './productosgama/productosgama.component'
     CommonModule,
     IonicModule,
     GamasRoutingModule,
-    
+    PipesModule
   ]
 })
 export class GamasModule { }
