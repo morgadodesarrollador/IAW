@@ -1,0 +1,41 @@
+<ion-header>
+    <app-header></app-header>
+  </ion-header>
+  <ion-content>
+    <app-breadcrumb [urls]='bread'>
+
+    </app-breadcrumb>
+    <ion-grid>
+      <ion-row>
+        <ion-col offset="6" size="6">
+          <ion-item id="bread">
+            <span class="active" [routerLink]="['/' ,'gamas']">
+                Gamas 
+            </span>
+            <span > > </span>
+            <span > {{ idgama }} </span>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col offset="2" size="10">
+          <h3>Productos de la Gama {{ idgama }}</h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list *ngIf="gama" >
+      <ion-card *ngFor="let producto of gama.productos">
+        <ion-card-header [routerLink]="[ '/tabs/productos/detalle', producto.CodigoProducto ]">
+        <!--  <img *ngIf="producto.imagen"  src="{{ images }}/{{ producto.imagen }}"> -->
+          <img *ngIf="producto.imagen" [src] = "producto.imagen | viewImage: 'productos'">
+          <ion-card-title>
+              {{ producto.Nombre }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ producto.Descripcion | truncate: 100 }} 
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+   
+  </ion-content>
