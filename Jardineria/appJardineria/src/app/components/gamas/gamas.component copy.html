@@ -1,0 +1,37 @@
+<ion-header>
+  <app-header [items]="bread"></app-header>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-button *ngIf="isClickConfig">
+      Nueva Categoria
+    </ion-button>
+    <div *ngIf="isAdmin; then configT else configF">fdfd</div>
+  </ion-item>
+  <ng-template #configT> 
+    <ion-icon (click)="pulsar()"  slot="end"  name="settings-outline"></ion-icon>
+  </ng-template>
+  <ng-template #configF>
+    <ion-icon (click)="pulsar()"  slot="end" *ngIf="isAdmin" name="settings"></ion-icon>
+  </ng-template>
+  <h3>Gamas de productosdd</h3>
+  
+  <ion-list>
+      <ion-card *ngFor="let g of gamas">
+        <ion-card-header 
+          [routerLink]="['/tabs/productos/gamas', g.Gama]" >
+        <!--  <img src="{{ images }}/{{ g.Imagen }}"> -->
+          <img [src] = "g.Imagen | viewImage: 'gamas'">
+          <ion-card-title >{{ g.Gama }}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+  </ion-list>
+  <router-outlet >
+fgdfs
+  </router-outlet>
+</ion-content>
