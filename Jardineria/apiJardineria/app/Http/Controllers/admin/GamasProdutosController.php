@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\gama;
+use App\Models\producto;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +16,10 @@ class GamasProdutosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getProductos($id){
-        $productos = Gama::with('productos')->where('Gama', '=', $id)->get();
+        $productos1 = Gama::with('productos')->where('Gama', '=', $id)->get();
+        $productos = producto::select("*")
+                                ->where('Gama', $id)
+                                ->get();
         return  response()->json([
             'status' => 'success',
             'message' => 'Productos de la Gama '. $id ,
@@ -43,6 +47,7 @@ class GamasProdutosController extends Controller
      */
     public function create()
     {
+
         //
     }
 
@@ -54,7 +59,7 @@ class GamasProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "nueva categoria";
     }
 
     /**

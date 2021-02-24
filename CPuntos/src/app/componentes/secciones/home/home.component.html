@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row justify-content-around">
+    <div class="col-md-6">
+      <div class="card" style="width: 18rem;">
+        <img src="assets/img/cpuntos.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Carnet por Puntos</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary"
+             (click)="accederPTOS()">Acceder</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" *ngIf="_ls.getTipo() !='Alumno'">
+      <div class="card" style="width: 18rem;">
+        <img src="assets/img/ctic.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Coordinacion TIC</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a class="btn btn-primary"
+             (click)="accederTIC()">Acceder</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

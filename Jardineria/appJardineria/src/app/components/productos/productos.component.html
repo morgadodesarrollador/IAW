@@ -6,8 +6,8 @@
   <ion-button *ngIf="uService.rol == 'administrador'">
     Nueva Producto
   </ion-button>
-  <ion-list *ngIf="gama" >
-    <ion-card *ngFor="let producto of gama.productos">
+  <ion-list *ngIf="productos" >
+    <ion-card *ngFor="let producto of productos">
       <ion-item *ngIf="uService.rol == 'administrador'">
         <ion-icon slot="end" name="create"></ion-icon>
         <ion-icon slot="end" name="trash"></ion-icon>

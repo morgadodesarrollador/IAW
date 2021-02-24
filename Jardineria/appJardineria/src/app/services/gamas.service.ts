@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { UsuariosService } from './usuarios.service';
-import {MsnApiGamas} from '../interfaces/ProductosInterface';
+import { MsnApiGamas, IGama, IProducto, MsnApiProductos } from '../interfaces/ProductosInterface';
+import { Subject } from 'rxjs';
 
 const URL = environment.url;
 @Injectable({
@@ -10,6 +11,9 @@ const URL = environment.url;
 })
 export class GamasService {
   private httpOptions: any ;
+  public respuesta: MsnApiProductos;
+  private productosStorage = new Subject <IProducto[]>();
+  public productosStorageObservable = this.productosStorage.asObservable();
 
   constructor(private http: HttpClient, private uService: UsuariosService) { }
 
@@ -21,18 +25,25 @@ export class GamasService {
       })
     };
   }
-  async getProductosGama(id):Promise<MsnApiGamas>{
+
+  async getProductosGama(id): Promise<MsnApiProductos>{
+    console.log('Id = ', id);
     const token = await this.uService.getToken();
     const ruta = `${ URL }/api/admin/gamas/${id}/productos`;
-    this.cabecera(token);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept' : 'application/json',
+        'Authorization' : 'Bearer ' + token,
+      })
+    };
     return new Promise ( resolve => {
-      this.http.get<MsnApiGamas>(ruta, this.httpOptions)
-        .subscribe(respuesta =>{
-          console.log(respuesta);
-          resolve(respuesta);
+      this.http.get<MsnApiProductos>(ruta, httpOptions)
+        .subscribe(data => {
+          this.respuesta = data;
+          this.productosStorage.next(this.respuesta.data);
+          resolve(this.respuesta);
         });
-    })
-    
+    });
   }
   async getGamas(): Promise<MsnApiGamas>{
     const token = await this.uService.getToken();

@@ -1,0 +1,28 @@
+<div class="row" *ngIf="_ls.getTipo()=='Profesor'">
+    <div class="col-5">
+      <div id="grupos" #grupo class="form-group">
+        <label>Grupos</label>
+        <select  [ngClass] = "{'border-success':exitoG===true}"
+                 class="selectpicker form-control input-sm" data-style="btn-info"
+                 (click)="cargarGrupos($event)"
+                 (change)="cargarAlumnos($event.target.value)">
+          <option *ngFor="let grupo of grupos" value = "{{grupo.unidad}}"
+                  data-content="<span class='badge badge-success'>Relish</span>">
+            {{grupo.unidad}} - <span>{{ grupo.puntos }}</span>
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-7">
+      <div id="alumnos" class="form-group">
+        <label>Alumnos</label>
+        <select  [ngClass] = "{'border-success':exitoA===true}"
+                 class="form-control input-sm" #alumno name="alumno"
+                 [(ngModel)]="incidencia.nidEscolar"
+                 (change)="selectAlumno(alumno.value)">
+          <option value="{{alumno.nIdEscolar}}" *ngFor="let alumno of alumnos">
+            {{alumno.alumno}} ({{alumno.puntos}})</option>
+        </select>
+      </div>
+    </div>
+  </div>

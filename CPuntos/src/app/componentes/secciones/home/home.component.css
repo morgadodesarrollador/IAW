@@ -1,0 +1,11 @@
+.container {
+  margin-top: 20px;
+}
+.card img{
+  width: 80px;
+  margin: 0 auto;
+}
+
+.card-title{
+  color: black !important;
+}

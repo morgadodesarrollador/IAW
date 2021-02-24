@@ -69,7 +69,7 @@ export class AppComponent implements OnInit {
       .subscribe ( data => {
         this.usuario = data;
         console.log (this.usuario );
-      })
+      });
     }
   
 

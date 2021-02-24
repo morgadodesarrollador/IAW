@@ -1,0 +1,29 @@
+
+<div class="container">
+
+  <div class="col-md-9">
+    <form #forma="ngForm" (ngSubmit)="enviar()">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <label>Usuario</label>
+            <input type="text" class="form-control" name="Cusuario"
+                   placeholder="Enter usuario"
+                   [(ngModel)]="user.codigo">
+            <small class="form-text text-muted">usuarioUdia o IdEscolar</small>
+          </div>
+          <div class="form-group">
+            <i class="fas fa-key"></i>
+            <label>Password</label>
+            <input type="password" class="form-control" name="pass"
+                   placeholder="Password"
+                   [(ngModel)]="user.pass">
+            <button type="submit"  class="btn btn-primary">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

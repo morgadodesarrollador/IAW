@@ -1,14 +1,24 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-subtitle>Productos</ion-card-subtitle>
+    <ion-card-subtitle>Filtros Productos</ion-card-subtitle>
   </ion-card-header>
-
-  <ion-card-content>
+  <ion-card-content class="ion-padding" *ngIf="gamas">
+    <ion-item>
+      {{ IFiltros.precios[0] }} / {{ IFiltros.precios[1] }}
+     <!--  <ion-range [(ngModel)]="rangeVal" pin="true" min="10" max="800"  (ionChange)="changeRange($event)"> -->
+      <ion-range  min="10" max="800" pin="true" dual-knobs  (ionChange)="changeRange($event)">
+        <ion-icon size="small" slot="start" name="remove-outline"></ion-icon>
+        <ion-icon slot="end" name="add-outline"></ion-icon>
+      </ion-range>
+    </ion-item>
     <ion-list>
-      <ion-item *ngFor="let entry of categorias"> 
-        <ion-label>{{entry.val}}</ion-label>
-        <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+      <ion-item *ngFor="let g of gamas; let i = index"> 
+        <ion-label>{{g.Gama}}</ion-label>
+        <ion-checkbox value=false slot="end" (click)="selectgama(g.Gama, i)" ></ion-checkbox>
+    <!--    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>-->
       </ion-item>
     </ion-list>
+    <ion-button color="light" (click)="aplicar()">Aplicar</ion-button>
+
   </ion-card-content>
 </ion-card>

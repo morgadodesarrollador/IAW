@@ -1,0 +1,42 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Conductas Contrarias a las Normas de Convivencia
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your name and age
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-selection-list #shoes>
+      <mat-list-option *ngFor="let incidencia of incidencias"
+                       (click)="getIncidencia(incidencia.codigoinc)">
+        <div *ngIf="incidencia.categoria=='Contraria'" class="datos">
+          <span>{{ incidencia.descripcion }}</span> <span>({{incidencia.puntos}})</span>
+        </div>
+
+      </mat-list-option>
+    </mat-selection-list>
+
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Conductas Gravemente Perjudiciales a las Normas de Convivencia
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-selection-list #shoes>
+      <mat-list-option *ngFor="let incidencia of incidencias"
+                       (click)="getIncidencia(incidencia.codigoinc)">
+        <span>{{ incidencia.descripcion }}</span>
+        <span>({{incidencia.puntos}})</span>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-expansion-panel>
+</mat-accordion>
+

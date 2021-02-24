@@ -1,0 +1,55 @@
+
+i.fas {
+  font-size: 30px;
+  padding: 10px;
+  color: dodgerblue;
+}
+i.fas:hover {
+  color: green;
+}
+.mat-sidenav{
+  margin-top: 10px;
+  padding: 5px;
+}
+mat-sidenav-content {
+  background-color: transparent;
+}
+mat-toolbar{
+  background-color: transparent !important;
+}
+.mat-icon-button .mat-icon{
+  color: dodgerblue !important;
+  font-size: 40px;
+  line-height: 24px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+img{
+  height: 60px;
+}
+.example-is-mobile .example-toolbar {
+  /*position: fixed;*/
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  /* z-index: 2;*/
+  background-color: transparent;
+  width: 50px;
+}
+
+.example-sidenav-container {
+
+  width: 100% !important;
+  background-color: transparent !important;
+  flex: 1;
+}
+
+.mat-drawer-content{
+
+
+}

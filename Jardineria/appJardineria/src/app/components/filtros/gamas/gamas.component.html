@@ -1,3 +1,17 @@
-<p>
- Filtro de  gamas works!
-</p>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Filtros Gamas</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content *ngIf="gamas">
+    <ion-list>
+      <ion-item *ngFor="let g of gamas"> 
+        <ion-label>{{g.Gama}}</ion-label>
+        <ion-checkbox slot="end" (click)="selectgama(g.Gama)"></ion-checkbox>
+    <!--    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>-->
+      </ion-item>
+    </ion-list>
+    <ion-button color="light">Aplicar</ion-button>
+
+  </ion-card-content>
+</ion-card>

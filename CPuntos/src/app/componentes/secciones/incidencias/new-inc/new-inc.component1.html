@@ -1,0 +1,55 @@
+<div class="container">
+<app-usuarios (mostrar)="showMostrar($event)"></app-usuarios>
+
+<form *ngIf="incidencia.nidEscolar&&_ls.getTipo()=='Profesor'" #forma="ngForm" (ngSubmit)="enviar()">
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label>NidEscolar</label>
+        <input type="text" class="form-control input-sm" name="nidEscolar" [(ngModel)]="incidencia.nidEscolar" >
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="date" class="form-control input-sm" name="fecha" [(ngModel)]="incidencia.fecha" >
+      </div>
+    </div>
+
+    <div class="col-8 ">
+      <div class="form-group">
+        <label>Tipo</label>
+        <select  class="form-control input-sm" data-style="btn-info"
+                (click)="getDatosIncidencia($event)">
+          <option *ngFor="let tipo of tipos; let i = index" value = "{{ i }}">
+            {{ tipo.descripcion }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Puntos</label>
+        <input type="number" class="form-control" name="puntos" [(ngModel)]="incidencia.puntos" >
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Descripcion</label>
+        <textarea name="desc" class="form-control" [(ngModel)]="incidencia.descripcion"></textarea>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Actuacion</label>
+        <textarea name="act" class="form-control" [(ngModel)]="incidencia.actuacion"></textarea>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button type="submit"  class="btn btn-primary">Enviar</button>
+    </div>
+  </div>
+</div>
+</form>
+</div>

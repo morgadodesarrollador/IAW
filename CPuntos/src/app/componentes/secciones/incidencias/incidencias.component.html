@@ -1,0 +1,26 @@
+<mat-nav-list>
+  <a mat-list-item
+     [routerLink]="[{ outlets:
+        { 'sidenav':['incidencias','new'],
+          'mainmenu':['incidencias']}}]"
+     (click)= snav.toggle();>
+    <i class="fas fa-plus-circle"></i>
+    Nueva Incidencia</a>
+</mat-nav-list>
+<mat-nav-list>
+  <a mat-list-item
+     [routerLink]="[{ outlets: { 'sidenav':['incidencias/list'] }}]"
+     (click)= snav.toggle();>
+
+    <i class="fas fa-list-ol"></i>
+    Historial de Incidencias</a>
+</mat-nav-list>
+<mat-nav-list *ngIf="_ls.getidentidad().sub=='admin'">
+  <a mat-list-item
+     [routerLink]="[{ outlets: { 'sidenav':['incidencias/tipo/new'] }}]"
+     (click)= snav.toggle();>
+
+    <i class="fas fa-list-ol"></i>
+    Gestión de Tipos</a>
+</mat-nav-list>
+

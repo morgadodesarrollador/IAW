@@ -1,0 +1,14 @@
+
+mat-list-option {
+  font-size: 14px !important;
+  color: dodgerblue;
+}
+mat-list-option div{
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  justify-content: flex-start !important;
+}
+mat-list-option span {
+  color: darkred;
+}
+

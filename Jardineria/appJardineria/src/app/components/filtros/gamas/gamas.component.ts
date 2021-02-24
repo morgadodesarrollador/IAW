@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GamasService } from '../../../services/gamas.service';
+import { IGama } from '../../../interfaces/ProductosInterface';
 
 @Component({
   selector: 'app-gamas',
@@ -6,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gamas.component.scss'],
 })
 export class GamasComponent implements OnInit {
-  public categorias = [
-    { val: 'Todas', isChecked: true },
-    { val: 'Herramientas', isChecked: false },
-    { val: 'Herbaceas', isChecked: false }
-  ];
-  constructor() { 
+  public gamas: IGama;
+  
+  constructor(private gamasService: GamasService) { 
+    
+  }
+  async ionViewWillEnter(){
+    
+  }
+  async ngOnInit() {
     
   }
 
-  ngOnInit() {}
+  
 
 }

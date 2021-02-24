@@ -1,0 +1,35 @@
+
+
+
+<div class="container">
+<app-usuarios (mostrar)="showMostrar($event)"></app-usuarios>
+<form *ngIf="incidencia.nidEscolar&&_ls.getTipo()=='Profesor'" #forma="ngForm" (ngSubmit)="enviar()">
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label>NidEscolar</label>
+        <input type="text" class="form-control input-sm" name="nidEscolar" [(ngModel)]="incidencia.nidEscolar" >
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label>Fecha</label>
+        <input type="date" class="form-control input-sm" name="fecha" [(ngModel)]="incidencia.fecha" >
+      </div>
+    </div>
+    <div class="col-12">
+      <app-show-inc
+        [incidencias]="tipos"
+        (listInc)="showIncidencias($event)">
+      </app-show-inc>
+
+    </div>
+
+    <div class="col-md-12">
+      <button type="submit"  class="btn btn-primary">Enviar</button>
+    </div>
+  </div>
+</div>
+</form>
+</div>

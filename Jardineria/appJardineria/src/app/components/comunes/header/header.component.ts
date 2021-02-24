@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IRuta } from '../../../interfaces/BreadInterfaces';
 
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  // tslint:disable-next-line:no-input-rename
   @Input('seccion') seccion: string;
-  
+  // tslint:disable-next-line:no-input-rename
+  @Input('items') items: IRuta[];
+   
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log(this.items);
+   }
 }

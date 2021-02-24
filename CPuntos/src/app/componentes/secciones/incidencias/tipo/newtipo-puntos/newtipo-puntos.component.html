@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group">
+        <label>Código</label>
+        <input type="text" class="form-control"
+               name="codigo" [(ngModel)]="TipoIncidencia.codigoInc" >
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Código</label>
+        <input type="numer" class="form-control"
+               name="puntos" [(ngModel)]="TipoIncidencia.puntos">
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea class="form-control"
+                  name="descripcion" [(ngModel)]="TipoIncidencia.descripcion">
+        </textarea>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-group">
+        <label>Actuación</label>
+        <textarea class="form-control"
+                  name="actuacion" [(ngModel)]="TipoIncidencia.actuacion">
+        </textarea>
+      </div>
+    </div>
+  </div>
+</div>

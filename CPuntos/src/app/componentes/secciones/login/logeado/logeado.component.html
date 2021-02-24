@@ -1,0 +1,21 @@
+<div class="container">
+<div class="usuario row" *ngIf="_ls.getidentidad()!=null">
+  <div class="col-8">
+    <h6 class="valor"> {{ _ls.getidentidad().name }}</h6>
+    <span>Perfil: </span>
+    <span>{{ _ls.getTipo() }}</span><br>
+  </div>
+  <div class="col-2 off">
+    <i class="fas fa-power-off" (click)="desconectar()"></i>
+  </div>
+  <div id="curso" class="col-12" *ngIf="_ls.getTipo() =='Alumno'">
+    <span class="campo">Curso:</span>
+    <span class="valor"> {{_ls.getidentidad().unidad }}</span>
+  </div>
+  <div id="profesor" class="col-12"  *ngIf="_ls.getTipo()=='Profesor'">
+
+    <span class="valor"> {{_ls.getidentidad().puesto }} </span>
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,26 @@
+
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar >
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+
+    <mat-sidenav
+      #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <app-logeado></app-logeado>
+      <router-outlet name="mainmenu">
+
+      </router-outlet>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet name="sidenav">
+      </router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

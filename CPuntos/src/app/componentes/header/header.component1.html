@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 logo">
+      <img src="/assets/img/logo.png" alt="">
+    </div>
+    <div class="titulo col-7">
+      <h6>APPs del IEs Cura Valera</h6>
+      <p>IES Cura Valera</p>
+    </div>
+    <div class="off col-2">
+      <i class="fas fa-power-off" (click)="desconectar()"></i>
+    </div>
+  </div>
+  <div class="usuario row" *ngIf="_ls.getidentidad()!=null">
+      <div class="col-7">
+        <h6 class="valor"> {{ _ls.getidentidad().name }}<br>
+          ({{_ls.getidentidad().sub}}) </h6>
+        <span>Perfil: </span>
+        <span>{{ _ls.getTipo() }}</span><br>
+      </div>
+      <div id="curso" class="col-5" *ngIf="_ls.getTipo() =='Alumno'">
+          <span class="campo">Curso:</span>
+          <span class="valor"> {{_ls.getidentidad().unidad }}</span>
+      </div>
+      <div id="profesor" class="col-5"  *ngIf="_ls.getTipo()=='Profesor'">
+
+          <span class="campo">Departamento:</span><br>
+          <span class="valor"> {{_ls.getidentidad().puesto }} </span>
+      </div>
+
+   </div>
+
+
+</div>
+
+
+
+

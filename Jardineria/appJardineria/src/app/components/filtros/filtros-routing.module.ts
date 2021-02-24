@@ -5,8 +5,10 @@ import { GamasComponent } from './gamas/gamas.component';
 import { ProductosComponent } from './productos/productos.component';
 
 const routes: Routes = [
-  { path: 'gamas', component: GamasComponent, outlet: 'rfiltros' },
-  { path: 'productos', component: ProductosComponent, outlet: 'rfiltros' },
+  { path: '', redirectTo: '/gammas', pathMatch: 'full' },
+  
+  { path: 'gamas', component: GamasComponent, outlet: 'secondary' },
+  { path: 'productos', component: ProductosComponent, outlet: 'secondary' },
   
 
 ];

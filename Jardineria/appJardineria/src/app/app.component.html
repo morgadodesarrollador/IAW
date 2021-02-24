@@ -17,24 +17,15 @@
           </div>
         </ion-list-header>
       </ion-header>
-      <ion-content> 
-        <ion-list id="inbox-list">
-          <ion-menu-toggle auto-hide="false" *ngFor="let g of gamas; let i = index" 
-                          (click)="mostrarProductos(g.Gama)">
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <ion-img src="http://jardineria.test/img/gamas/{{g.Imagen}}"></ion-img>
-              </ion-thumbnail>
-              <ion-label>
-                {{g.Gama}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-        
+      <ion-content>   
+        <ion-router-outlet name="secondary">
+          fgdfgd
+        </ion-router-outlet>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main-content" name="primary"></ion-router-outlet>
+    <ion-router-outlet name="primary" id="main-content">
+      
+    </ion-router-outlet>
 
   </ion-split-pane>
   

@@ -1,0 +1,10 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+i.fas {
+  font-size: 30px;
+  padding: 10px;
+  color: dodgerblue;
+}
+i.fas:hover {
+  color: green;
+}

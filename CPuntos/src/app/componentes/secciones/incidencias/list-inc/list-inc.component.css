@@ -1,0 +1,17 @@
+div.container{
+  margin-top: 0px;
+}
+router-outlet {
+  margin-top: 50px;
+  background-color: red;
+}
+table {
+  overflow: scroll !important;
+  height: 600px ;
+}
+table thead{
+  color: dodgerblue !important;
+}
+table tbody {
+  color: black;
+}

@@ -1,12 +1,20 @@
 <ion-header>
-  <app-header></app-header>
+  <app-header [items]="bread"></app-header>
 </ion-header>
 <ion-content>
-  <h3>Gamas de productos</h3>
+  <ion-item>
+    <ion-button *ngIf="isClickConfig">
+      Nueva Categoria
+    </ion-button>
+    <ion-icon (click)="pulsar()"  slot="end"  [name]="tipo"></ion-icon>
+  </ion-item>
+  
+  <h3>Gamas de productosdd</h3>
   
   <ion-list>
       <ion-card *ngFor="let g of gamas">
-        <ion-card-header [routerLink]="[ 'productos', g.Gama]" >
+        <ion-card-header 
+          [routerLink]="['/tabs/productos/gamas', g.Gama]" >
         <!--  <img src="{{ images }}/{{ g.Imagen }}"> -->
           <img [src] = "g.Imagen | viewImage: 'gamas'">
           <ion-card-title >{{ g.Gama }}</ion-card-title>
@@ -18,4 +26,7 @@
         </ion-card-content>
       </ion-card>
   </ion-list>
+  <router-outlet >
+fgdfs
+  </router-outlet>
 </ion-content>

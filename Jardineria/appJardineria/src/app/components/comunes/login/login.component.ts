@@ -4,6 +4,7 @@ import { UsuariosService } from '../../../services/usuarios.service';
 import { NavController } from '@ionic/angular';
 import { UiServiceService } from '../../../services/ui-service.service';
 import { ILogin } from '../../../interfaces/UsuarioInterface';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,14 @@ import { ILogin } from '../../../interfaces/UsuarioInterface';
 export class LoginComponent implements OnInit {
 
   loginUser: ILogin = {
-    email: 'pepe@gmail.com',
+    email: 'antonio@gmail.com',
     password: '1234'
   };
 
   constructor(private uService: UsuariosService,
               private navCtrl: NavController, 
+              private router: Router,
+              private route: ActivatedRoute,
               private uiService: UiServiceService) { 
 
   }
@@ -31,7 +34,18 @@ export class LoginComponent implements OnInit {
 
     if ( peticion.status == 'success' ){
       // navegar al home
-      this.navCtrl.navigateRoot('tabs', { animated: true } );
+     
+      this.router.navigate(['/', { outlets: {
+          primary: ['tabs', 'gamas'],
+     //     secondary: ['filters', 'gamas']
+      } }], { relativeTo: this.route.parent } );
+
+
+//      this.navCtrl.navigateRoot('tabs', { animated: true } );
+  //    this.router.navigate(['/filters', { outlets: { secondary: [ 'gamas'] } }]);
+
+      
+
     }else {
       this.uiService.alertaInformativa('Usuario/Password no son válidos');
     }

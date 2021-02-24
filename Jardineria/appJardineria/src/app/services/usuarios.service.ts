@@ -12,6 +12,7 @@ const URL = environment.url;
 export class UsuariosService {
   
   public token: string = null;
+  public rol: string;
   public usuario: IUsuario;
   private userStorage = new Subject <IUsuario>();
   public userStorageObservable = this.userStorage.asObservable();
@@ -55,6 +56,7 @@ export class UsuariosService {
   async saveUser(user: IUsuario){ 
     this.usuario = user;
     await this.storage.set('usuario', user);
+    this.rol = user.rol;
     //next -> emite this.usuario a todos los compoentes subscritos a este dato
     this.userStorage.next(this.usuario);
   }
@@ -96,6 +98,16 @@ export class UsuariosService {
         });
     });
   }
+ 
+  getRol(): Promise<string>{
+    return new Promise<string> ( resolve =>{
+      this.storage.get('usuario')
+        .then (user => {
+          resolve (user.rol);
+        });
+    });
+  }
+
 
   async getPerfil(){
     const token = await this.getToken();
