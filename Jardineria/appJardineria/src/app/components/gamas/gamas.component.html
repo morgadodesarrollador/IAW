@@ -6,8 +6,6 @@
     <ion-button *ngIf="configService.isClickConfig">
       Nueva Categoria
     </ion-button>
-    <ion-icon color="primary" *ngIf="configService.isAdmin" (click)="configService.edicion()"  slot="end"  
-              [name]="configService.iconEdit"></ion-icon>
   </ion-item>
   
   <h3>Listado de Gamas {{ configService.isAdmin }}   </h3>

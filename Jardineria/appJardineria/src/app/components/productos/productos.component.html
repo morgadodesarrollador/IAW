@@ -6,8 +6,6 @@
     <ion-button *ngIf="configService.isClickConfig">
       Nuevo Producto
     </ion-button>
-    <ion-icon color="primary" *ngIf="configService.isAdmin" (click)="configService.edicion()"  slot="end"  
-              [name]="configService.iconEdit"></ion-icon>
   </ion-item>
   <h3>Listado de Productos </h3>
   <ion-list *ngIf="productos" >
