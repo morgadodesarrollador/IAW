@@ -8,16 +8,16 @@ export class ConfigService {
   isClickConfig: boolean = false;
   iconFing = ['settings', 'settings-outline'];
   isAdmin: boolean = false;
-  constructor(private uService: UsuariosService) {
-    this.config();
-  }
+  iconEdit: string = 'settings-outline';
+  constructor(private uService: UsuariosService) { }
 
-  public config() {
-    this.uService.userStorageObservable
-      .subscribe ( data => {
-        if (data.rol == 'administrador'){
-          this.isAdmin = true;
-        }
-      });
+  public edicion(){
+    this.isClickConfig = !this.isClickConfig;
+    if (this.isClickConfig){
+      this.iconEdit = this.iconFing[0];
+    }else{
+      this.iconEdit = this.iconFing[1];
+    }
   }
+  
 }

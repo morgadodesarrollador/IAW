@@ -17,3 +17,11 @@ ion-grid ion-item#bread {
 ion-grid ion-item#bread span.active {
     color: blue;
 }
+ion-item.herramientas ion-icon{
+    transition: 1s all;
+}
+ion-item.herramientas ion-icon:hover{
+    color: red !important;
+    transform: scale(1.3);
+    
+}

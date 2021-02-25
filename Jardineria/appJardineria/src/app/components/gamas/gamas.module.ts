@@ -7,6 +7,7 @@ import { GamasComponent } from './gamas.component';
 import { ProductosgamaComponent } from './productosgama/productosgama.component';
 import { PipesModule } from '../../pipes/pipes.module';
 import { ProductosModule } from '../productos/productos.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [GamasComponent, ProductosgamaComponent],

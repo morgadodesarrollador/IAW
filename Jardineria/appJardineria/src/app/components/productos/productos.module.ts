@@ -6,6 +6,7 @@ import { PipesModule } from '../../pipes/pipes.module';
 import { ProductosComponent } from './productos.component';
 import { ProductoComponent } from './producto/producto.component';
 import { ComunesModule } from '../comunes/comunes.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ComunesModule } from '../comunes/comunes.module';
   imports: [
     CommonModule,
     IonicModule,
+    FormsModule,
     PipesModule,
     ComunesModule,
     ProductosRoutingModule

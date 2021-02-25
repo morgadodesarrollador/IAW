@@ -1,7 +1,24 @@
-ion-item {
-    height: 80px;
+ion-item#precios {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: green;
+    height: 200px;
+}
+#datos {
+    margin: 0 auto;
+    text-align: right;
+    width:40%;
+   display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;  
+}
+#datos span {
+    color: blue;
+}
+ion-range {
+    height: 50px;
 }
 
 ion-label{
-    font-size: 14px;
+    font-size: 12px;
 }

@@ -18,11 +18,11 @@ class ProductosController extends Controller
                                 ->where('PrecioVenta', '>', $precios[0])
                                 ->where('PrecioVenta', '<', $precios[1])
                                 ->get();
-          return  response()->json([
-            'status' => 'success',
-            'message' => 'Productos filtrados' ,
-            'data' => $productos,
-            'code' => 401,
+        return  response()->json([
+        'status' => 'success',
+        'message' => 'Productos filtrados' ,
+        'data' => $productos,
+        'code' => 401,
         ]);
     }
 }

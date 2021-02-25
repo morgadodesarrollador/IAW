@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment.prod';
 import { IRuta } from 'src/app/interfaces/BreadInterfaces';
 import { UsuariosService } from '../../services/usuarios.service';
 import { NavController } from '@ionic/angular';
+import { ConfigService } from '../../services/config.service';
 const URL = environment.url;
 
 @Component({
@@ -27,9 +28,9 @@ export class GamasComponent implements OnInit {
     { nombre: 'Gamas', clase: 'active', link: [ '/gamas'] }
   ];
   constructor(public uService: UsuariosService,  private gamasService: GamasService,
-                    private navCtrl: NavController, 
-                    private router: Router,
-                    private route: ActivatedRoute ) {
+              private navCtrl: NavController, 
+              private router: Router, private route: ActivatedRoute,
+              public configService: ConfigService ) {
     this.gama = this.route.snapshot.paramMap.get('id');
     console.log (this.gama);
     console.log(this.gamasService.getGamas());
@@ -38,31 +39,16 @@ export class GamasComponent implements OnInit {
    }
 
   async ngOnInit() {
-  
     let respuesta = await this.gamasService.getGamas();
-//    this.rol = await this.uService.getRol();
     if (respuesta.status == 'success'){
       this.gamas = respuesta.data;
+      console.log('isAdmin', this.configService.isAdmin, this.configService.iconEdit, this.configService.isClickConfig);
       console.log(this.gamas);
+     // this.configService.edicion();
     }
-    this.uService.userStorageObservable
-      .subscribe ( data => {
-        this.rol = data.rol;
-        if (this.rol == 'administrador'){
-          this.isAdmin = true;
-          this.tipo = 'settings-outline';
-        }else
-          this.isAdmin = false;
-        this.isActiveConfig = !this.isActiveConfig;
-        console.log (this.rol );
-      });
   }
   pulsar(){
-    this.isClickConfig = !this.isClickConfig;
-    if (this.isClickConfig)
-      this.tipo = "settings"
-    else  
-      this.tipo = "settings-outline";
+    this.configService.edicion();
   }
   async ionViewWillEnter (){
     // this.router.navigate(['/filters', { outlets: { secondary: ['gamas'] } }]);

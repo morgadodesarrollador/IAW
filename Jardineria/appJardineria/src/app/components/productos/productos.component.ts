@@ -5,6 +5,7 @@ import { GamasService } from 'src/app/services/gamas.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import { MsnApiProductos } from '../../interfaces/ProductosInterface';
 import { ProductosService } from '../../services/filters/productos.service';
+import { ConfigService } from '../../services/config.service';
 
 @Component({
   selector: 'app-productos',
@@ -17,20 +18,22 @@ export class ProductosComponent implements OnInit {
   public idgama: string;
   public productos: IProducto[];
   public images = `${URL}/img/productos`;
-   rol: string;
+  public producto: IProducto = {
+    Nombre: '',
+    PrecioVenta: 0
+  }; 
   // tslint:disable-next-line:no-input-rename
  // @Input('idGama') idgama: string;
 
   constructor(private route: ActivatedRoute,  private router: Router, public filterPService: ProductosService,
-              private gService: GamasService, public uService: UsuariosService ) { 
-  
+              private gService: GamasService, public uService: UsuariosService,
+              public configService: ConfigService) { 
+    
     this.idgama = this.route.snapshot.paramMap.get('gama');
     console.log(this.idgama);
     this.router.navigate(['/filters', { outlets: { secondary: ['productos'] } }]);
-
-
   }
-
+ 
   async ngOnInit() {
     this.respuesta = await this.gService.getProductosGama(this.idgama);
     console.log(this.respuesta);
@@ -52,9 +55,13 @@ export class ProductosComponent implements OnInit {
 
     this.uService.userStorageObservable
       .subscribe ( data => {
-        this.rol = data.rol;
-        console.log (this.rol );
+    //    this.rol = data.rol;
+        
       });
+  }
+
+  editar(){
+    console.log(this.producto);
   }
 
 }

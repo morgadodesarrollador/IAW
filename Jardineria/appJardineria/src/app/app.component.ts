@@ -7,6 +7,7 @@ import { GamasService } from './services/gamas.service';
 import { UsuariosService } from './services/usuarios.service';
 import { Router } from '@angular/router';
 import { IUsuario } from './interfaces/UsuarioInterface';
+import { ConfigService } from './services/config.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit {
     private gamasService: GamasService,
     private uService: UsuariosService,
     private navCtrl: NavController,
-    private router: Router
+    private router: Router,
+    private configService: ConfigService
   ) {
     this.initializeApp();
   }
@@ -63,8 +65,7 @@ export class AppComponent implements OnInit {
     
   }
   async ngOnInit() {
-    //this.usuario = await this.uService.getUsuarioStorage();
-  
+
     this.uService.userStorageObservable
       .subscribe ( data => {
         this.usuario = data;

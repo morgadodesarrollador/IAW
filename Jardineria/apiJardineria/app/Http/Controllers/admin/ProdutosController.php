@@ -23,16 +23,6 @@ class ProdutosController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -51,7 +41,17 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        //
+        $productos = producto::with('migama')
+                                ->select('*')
+                                ->where('CodigoProducto', '=', $id)
+                                ->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Producto seleccionado' ,
+            'data' => $productos[0],
+            'code' => 401,
+        ]);
+
     }
 
     /**
