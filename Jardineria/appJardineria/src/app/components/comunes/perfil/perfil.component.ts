@@ -11,7 +11,7 @@ import { ConfigService } from '../../../services/config.service';
 export class PerfilComponent implements OnInit {
 
   usuario: IUsuario;
-  constructor(private uService: UsuariosService) { }
+  constructor(private uService: UsuariosService, public configService: ConfigService) { }
 
   async ngOnInit() {
     //this.usuario = await this.uService.getUsuarioStorage();

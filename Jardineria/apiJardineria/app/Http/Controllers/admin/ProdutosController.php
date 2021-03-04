@@ -48,7 +48,7 @@ class ProdutosController extends Controller
         return  response()->json([
             'status' => 'success',
             'message' => 'Producto seleccionado' ,
-            'data' => $productos[0],
+            'data' => $productos,
             'code' => 401,
         ]);
 

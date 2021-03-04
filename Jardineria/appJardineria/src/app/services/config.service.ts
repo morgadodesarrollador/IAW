@@ -13,6 +13,7 @@ export class ConfigService {
 
   public edicion(){
     this.isClickConfig = !this.isClickConfig;
+    console.log(this.isClickConfig);
     if (this.isClickConfig){
       this.iconEdit = this.iconFing[0];
     }else{

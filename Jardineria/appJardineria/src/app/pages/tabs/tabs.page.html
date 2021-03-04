@@ -19,9 +19,8 @@
       <ion-icon name="person-outline"></ion-icon>
       <ion-label>Perfil</ion-label>
     </ion-tab-button>
-    <ion-tab-button *ngIf="configService.isAdmin">
-      <ion-icon color="primary"  (click)="configService.edicion()"  
-      [name]="configService.iconEdit">
+    <ion-tab-button *ngIf="configService.isAdmin" (click)="configService.edicion()">
+      <ion-icon color="primary" [name]="configService.iconEdit">
       </ion-icon>
       <ion-label>Config</ion-label>
     </ion-tab-button>

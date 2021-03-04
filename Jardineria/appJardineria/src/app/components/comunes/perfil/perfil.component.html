@@ -5,8 +5,12 @@
   <ion-card>
     <ion-item>
       <h2>Datos del Perfil</h2>
+      <ion-button slot="end" *ngIf="configService.isClickConfig">
+        Actualizar
+      </ion-button>
+ 
+     
     </ion-item>
-  
     <ion-card-content>
       <ion-grid *ngIf="usuario">
         <ion-row>

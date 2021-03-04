@@ -3,13 +3,12 @@
 </ion-header>
 <ion-content>
   <ion-item>
-    <ion-button *ngIf="configService.isClickConfig">
+    <h3>Listado de Gamas  </h3>
+    <ion-button slot="end" *ngIf="configService.isClickConfig">
       Nueva Categoria
     </ion-button>
   </ion-item>
-  
-  <h3>Listado de Gamas {{ configService.isAdmin }}   </h3>
-  
+
   <ion-list>
       <ion-card *ngFor="let g of gamas">
         <ion-card-header 

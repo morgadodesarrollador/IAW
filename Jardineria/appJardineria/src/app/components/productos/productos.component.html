@@ -3,15 +3,16 @@
 </ion-header>
 <ion-content>
   <ion-item>
-    <ion-button *ngIf="configService.isClickConfig">
+    <h3>Listado de Productos </h3>
+    <ion-button slot="end" *ngIf="configService.isClickConfig">
       Nuevo Producto
     </ion-button>
   </ion-item>
-  <h3>Listado de Productos </h3>
+  
   <ion-list *ngIf="productos" >
     <ion-card *ngFor="let producto of productos">
       <ion-item class="herramientas" *ngIf="configService.isClickConfig">
-        <ion-icon [routerLink]="[ '/tabs/productos/detalle/',producto.CodigoProducto,'E' ]" 
+        <ion-icon [routerLink]="[ '/tabs/productos/edit/',producto.CodigoProducto]" 
                   color="primary" slot="end" name="create"></ion-icon>
         <ion-icon color="primary" slot="end" name="trash"></ion-icon>
         <ion-icon color="primary" slot="end" name="close"></ion-icon>
