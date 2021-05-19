@@ -1,0 +1,19 @@
+
+<ion-header>
+  <app-header ></app-header>
+</ion-header>
+<ion-content *ngIf="producto">
+  <ion-item>
+    <h3>Detalle Producto </h3>
+    <ion-button slot="end" *ngIf="configService.isClickConfig">
+      Editar Producto
+    </ion-button>
+  </ion-item>
+    <ion-item *ngIf="configService.isClickConfig; else nombreEdit" >
+      <ion-input required name="nombre"  type="text" [(ngModel)]="producto.Nombre"></ion-input>
+    </ion-item>
+    <ng-template #nombreEdit>
+      <ion-input required name="nombre" readonly type="text" [(ngModel)]="producto.Nombre"></ion-input>
+    </ng-template>
+
+</ion-content>
