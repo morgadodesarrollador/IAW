@@ -1,0 +1,57 @@
+
+<ion-header>
+  <app-header ></app-header>
+</ion-header>
+<ion-content *ngIf="producto">
+  <h3>Detalle Producto </h3>
+   
+    <ion-item  *ngIf="configService.isClickConfig">
+      <ion-icon [routerLink]="[ '/tabs/productos/edit/',producto.CodigoProducto]" 
+      color="primary" slot="end" name="create"></ion-icon>
+    </ion-item>  
+    <ion-card>
+      <img *ngIf="producto.imagen" [src] = "producto.imagen | viewImage: 'productos'">
+      <ion-card-header>
+        <ion-item class="precio" >
+          <div id="precio">
+            <span id="PV">{{ producto.PrecioVenta }} €</span><br>
+            <span *ngIf="configService.isAdmin"  id="PP">
+              <span id="campo">Precio Coste</span>
+              <span id="dato">{{ producto.PrecioProveedor }}</span>
+            </span>
+          </div>
+          <h4 slot="end">{{producto.Gama}}</h4>
+        </ion-item>
+        <ion-list>
+          <ion-item>
+            <span id="campo">Proveedor</span>
+            <span slot="end" id="dato">{{ producto.Proveedor }}</span>
+          </ion-item>
+          <ion-item class="cantidad">
+            <span slot="start" id="campo">Cantidad</span>
+            <ion-item id="cantidad">
+              <ion-input name="cantidad" [(ngModel)]="cantidad"></ion-input>
+              <ion-icon name="caret-up"(click)="inc()"></ion-icon>
+              <ion-icon name="caret-down" (click)="dec()"></ion-icon>
+            </ion-item>
+          </ion-item>
+          <ion-item *ngIf="configService.isAdmin">
+            <span> Stock </span>
+            <span slot="end"> {{ producto.CantidadEnStock }}  </span>
+          </ion-item>
+        </ion-list>
+        <ion-card-title>{{producto.Nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ producto.Descripcion }}
+      </ion-card-content>
+      <ion-item>
+        <ion-button expand="full">
+          Añadir a la Cesta
+        </ion-button>
+      </ion-item>
+    </ion-card>
+    
+    
+
+</ion-content>

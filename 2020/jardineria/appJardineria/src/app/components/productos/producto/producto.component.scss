@@ -1,0 +1,41 @@
+p  {
+    margin-top: 100px;
+}
+ion-card {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content:space-around;
+}
+ion-card img {
+    width: 200px;
+    margin: 0 auto;
+}
+
+ion-card-header ion-item.precio {
+    display: flex;
+    flex-flow: row nowrap;
+}
+ion-card-header ion-item.precio div#precio {
+}
+ion-card-header ion-item.precio h4 {
+    color: blue;
+}
+ion-card-header div#precio #PV{
+    font-size: 35px;
+    color: blue;
+}
+ion-card-header div#precio #PP{
+    color:red; 
+    display: inline-block;
+    font-style: italic;
+    text-align: right;
+}
+
+
+.cantidad {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.cantidad span {
+    width: 40%;
+}

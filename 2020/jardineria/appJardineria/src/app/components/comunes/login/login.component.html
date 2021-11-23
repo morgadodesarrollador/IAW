@@ -1,0 +1,32 @@
+<ion-header>
+  <app-header seccion="nOS LOGEAMOS ..."></app-header>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <h2>Login</h2>
+    </ion-item>
+  
+    <ion-card-content>
+      <form (ngSubmit)="login(fLogin)" #fLogin="ngForm"> 
+        <ion-item>
+          <ion-label position="floating">Nombre de Usuario</ion-label>
+          <ion-input required name="email" type="email" [(ngModel)]="loginUser.email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input required name="password" type="password" [(ngModel)]="loginUser.password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-button slot="start" type="submit" color="tertiary">Login</ion-button>
+          <ion-label routerLink="/signup" slot="end" color="primary">Crear una cuenta</ion-label>
+        </ion-item>
+        
+       <!-- <ion-button routerLink="/home" expand="full" color="success">Entrar</ion-button> -->
+
+      </form>
+      
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>

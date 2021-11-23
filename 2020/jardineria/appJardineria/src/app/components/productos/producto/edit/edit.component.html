@@ -1,0 +1,68 @@
+<ion-header>
+  <app-header ></app-header>
+</ion-header>
+<ion-content *ngIf="producto">
+  <h3>Detalle Producto </h3>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button color="danger">
+        <ion-icon size="xx-large" slot="icon-only"  name="close"></ion-icon>
+      </ion-button>
+      <ion-button color="success" (click)="edit()">
+        <ion-icon slot="icon-only" name="checkmark" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button  *ngIf="configService.isClickConfig">
+        <ion-icon [routerLink]="[ '/tabs/productos/edit/',producto.CodigoProducto]" 
+        color="primary" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+    
+    <ion-list>
+      <ion-item>
+        <div class="campo">
+          <ion-label>Código</ion-label>
+          <ion-input [(ngModel)]="producto.CodigoProducto"></ion-input>
+        </div>
+        <div slot="end" class="campo stock">
+          <ion-label>Stock</ion-label>
+          <ion-input [(ngModel)]="producto.CantidadEnStock"></ion-input>
+        </div>  
+      </ion-item>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input slot="end" [(ngModel)]="producto.Nombre"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="gamas">
+          <ion-label>Gama ({{producto.Gama}}</ion-label>
+          <ion-select [(ngModel)]="producto.Gama">
+            <ion-select-option *ngFor="let gama of gamas" [value]="gama.Gama">
+              {{ gama.Gama }}
+            </ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Proveedor</ion-label>
+        <ion-select></ion-select>
+      </ion-item>
+      <ion-item>
+        <div class="campo">
+          <ion-label>PVP</ion-label>
+          <ion-input [(ngModel)]="producto.PrecioVenta"></ion-input>
+        </div>
+        <div class="campo">
+          <ion-label>PProveedor</ion-label>
+          <ion-input [(ngModel)]="producto.PrecioProveedor"></ion-input>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label  position="floating">Descripción</ion-label>
+        <ion-textarea [(ngModel)]="producto.Descripcion" rows="12" cols="20" [(ngModel)]="producto.Descripcion"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    
+    
+
+</ion-content>
