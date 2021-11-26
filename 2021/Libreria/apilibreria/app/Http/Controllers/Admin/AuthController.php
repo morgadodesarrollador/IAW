@@ -17,10 +17,12 @@ class AuthController extends Controller
     public function login(Request $request){
 
          #Paso1-. validamos el  email/pasword que viene del password
-         $request->validate([
+         $rules = [
             'email' => 'required|string',
             'password' => 'required|string'
-        ]);
+        ];
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
 
         #Paso2-. Creamos el array de credenciales --> ['email => $email, 'password'=>$password] con el método Auth::attemp
         $credentials = request(['email', 'password']);
@@ -42,20 +44,20 @@ class AuthController extends Controller
         # a nuestra REST API
 
         $tokenAuth = $user->createToken('Personal Access Token');
-        $token = $tokenAuth->accessToken;
+        $accesToken = $tokenAuth->accessToken;
         #asociamos el user_id del token al user_id del usuario logeado
         $tokenAuth->token->user_id = $user['id'];
         #Por defecto la vigencia del token es de un año.
         #En este caso añadimos 1 semana mas a la vigencia del token después del logeo
-        $tokenAuth->token->expires_at = Carbon::now()->addWeeks(1);
+        $tokenAuth->token->expires_at = Carbon::now()->addSecond(30);
         #almacenamos el token en la tabla oauth_access_tokens
         $tokenAuth->token->save();
 
         return response()->json([
             'status' => 'success',
             'token' => [
-                 'token' => $tokenAuth,
-                 'access_token' => $token,
+              //   'token' => $tokenAuth,
+                 'access_token' => $accesToken,
                  'token_type' => 'Bearer ',
                  'expires_at' => Carbon::parse($tokenAuth->token->expires_at)->toDateTimeString()
             ]
@@ -97,7 +99,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
             'image'    => $request->input('image')
         ));
-        $user->save();
+        //$user->save();
         #Paso5-. Creamos el token y lo almacenamos en oauth_access_tokens
         $tokenAuth = $user->createToken('Personal Access Token');
         $token = $tokenAuth->accessToken;
@@ -107,7 +109,15 @@ class AuthController extends Controller
             'status' => 'success',
             'data' =>  $tokenAuth,
             'message' => 'Successfully created user! '], 201);
+    }
 
+    public function logout(Request $request){
+        //elimina el token de oauth_access_token.
+        $request->user()->token()->revoke();
+    //    $request->user()->token()->update(Date:now());
 
+        return  response()->json([
+            'message' => 'Sesión finalizada con éxito',
+        ]);
     }
 }
