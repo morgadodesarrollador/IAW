@@ -2,7 +2,7 @@ import { IResolvers } from "@graphql-tools/utils";
 
 const queryBookResolvers: IResolvers = {
     Query: {
-        books: () => {
+        hello: () => {
            return "Listado de Libros"
         }
     }
