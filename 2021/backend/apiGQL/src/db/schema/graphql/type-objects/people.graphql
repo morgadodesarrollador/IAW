@@ -3,4 +3,8 @@ type People {
   name: String!
   email: String!
   website: String
+  github: String
+  twitter: String
+  books: [String!]!
+
 }

@@ -1,0 +1,5 @@
+
+type Query {
+    peopleList: [People]
+    peopleId(id:ID!): Result
+}
