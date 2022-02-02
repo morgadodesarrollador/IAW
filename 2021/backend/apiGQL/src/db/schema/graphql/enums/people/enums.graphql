@@ -1,0 +1,6 @@
+enum PeopleEnum{
+  Invitado
+  Registrado
+  Comercial
+  Administrador
+}

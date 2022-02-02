@@ -1,4 +1,4 @@
-import { IResult } from './../../../interfaces/IResult';
+import { IResult } from '../../../interfaces/IResult';
 import { IResolvers } from "@graphql-tools/utils";
 import { IBook } from '../../../interfaces/IBook';
 

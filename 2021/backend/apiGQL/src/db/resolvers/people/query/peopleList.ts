@@ -5,7 +5,7 @@ import { Db } from 'mongodb';
 const queryPeopleResolvers: IResolvers = {
     Query: {
         peopleList: async (_:void, __unknown, context: {db: Db}): Promise<IPeople[]> => {
-            const peoples = await context.db.collection("clientes").find().toArray() as IPeople[];
+            const peoples = await context.db.collection("people").find().toArray() as IPeople[];
             return peoples;
         }
     }

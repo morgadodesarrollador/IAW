@@ -6,7 +6,7 @@ import { Db } from 'mongodb';
 const queryPeopleResolvers: IResolvers = {
     Query: {
         peopleId: async (_:void, args: {id: string}, context: { db: Db }  ): Promise <IResult> => {
-            return await context.db.collection("clientes").findOne({ id: args.id })
+            return await context.db.collection("people").findOne({ id: args.id })
                 .then ( (peopleDocument) => {
                     return {
                         status: true,
