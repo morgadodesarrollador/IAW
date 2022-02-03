@@ -1,4 +1,4 @@
-import { IPeople } from './../../../interfaces/IPeople';
+import { IPeople } from '../../../interfaces/IPeople';
 import { IResolvers } from "@graphql-tools/utils";
 import { IBook } from '../../../interfaces/IBook';
 

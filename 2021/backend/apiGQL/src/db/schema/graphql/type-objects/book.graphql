@@ -9,4 +9,5 @@ type Book {
     longDescription: String
     status: StatusEnum
     authors: [String!]!
+    byPeoplesBuy: [People]
 }
