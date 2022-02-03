@@ -1,3 +1,5 @@
+import { IBook } from "./IBook";
+
 export interface IPeople {
     _id?: any;
     id: string
@@ -7,4 +9,5 @@ export interface IPeople {
     github?: string;
     twitter?: string;
     books: Array<string>;
+    libros: Array<IBook>;
   }

@@ -6,7 +6,7 @@ const queryBookResolvers: IResolvers = {
     Query: {
         bookList: async(_: void, __:unknown, context: { db: Db }): Promise <Array<IBook>> => { //<IBook[]>
           const books = await context.db.collection("book").find().toArray() as Array<IBook>;
-          console.log(books);
+       //   console.log(books);
         //  const books = await context.db.collection("libros").find().toArray() as Array<IBook>;
           return books;
         }

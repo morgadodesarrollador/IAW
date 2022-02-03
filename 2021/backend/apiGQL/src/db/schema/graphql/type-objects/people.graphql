@@ -6,5 +6,5 @@ type People {
   github: String
   twitter: String
   books: [String!]!
-
+  libros: [Book]
 }

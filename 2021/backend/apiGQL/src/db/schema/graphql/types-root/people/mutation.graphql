@@ -1,0 +1,4 @@
+
+type Mutation {
+    addPeople(people:PeopleInput!): Result!
+}
