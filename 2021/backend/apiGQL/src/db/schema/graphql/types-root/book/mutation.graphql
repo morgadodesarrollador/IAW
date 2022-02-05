@@ -1,4 +1,0 @@
-
-type Mutation {
-    addBook(book: BookInput!): Result!
-}
