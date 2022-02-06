@@ -4,8 +4,20 @@ div.container {
   width: 90%;
   margin: 0 auto;
 }
+/* css cards */
+div#cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-around
+}
+div#cards app-card {
+  width:30%;
+  padding: 10px;
+}
 
 
+
+/* css tablas */
 div.row {
   background-color: rgba(0,0,0,.1);
 }

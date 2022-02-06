@@ -7,6 +7,7 @@ import { ListarComponent } from './listar/listar.component';
 import { DetailComponent } from './detail/detail.component';
 import { NewComponent } from './new/new.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    LibrosRoutingModule
+    LibrosRoutingModule,
+    SharedModule
   ]
 })
 export class LibrosModule { }
