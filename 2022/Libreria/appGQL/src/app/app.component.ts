@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {Apollo, gql} from 'apollo-angular';
 import { IBook } from './interfaces/IBook';
-import GET_BOOK_LISTA from './graphql/schemas/book';
+import { GET_BOOKLIST } from './@graphql/operations/bookList';
 
 const GET_BOOK_LIST1 = gql`
     query GetBooks{
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy  {
   ngOnInit(): void {
 
     this.querySubscription = this.apollo.watchQuery<any>({
-        query: GET_BOOK_LISTA
+        query: GET_BOOKLIST
       })
       .valueChanges
       .subscribe( (result: any ) => {

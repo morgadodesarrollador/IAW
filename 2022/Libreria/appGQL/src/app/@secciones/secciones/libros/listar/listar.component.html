@@ -1,0 +1,18 @@
+
+<div class="container">
+  <h6>Listado de Libros</h6>
+  <div class="row header">
+    <div class="col-lg-3">Carátula</div>
+    <div class="col-lg-3">ISBN</div>
+    <div class="col-lg-3">Título</div>
+    <div class="col-lg-3">Status</div>
+  </div>
+  <div class="row" *ngFor="let book of booklist">
+    <div class="col-lg-3">
+      <img src={{book.thumbnailUrl}}>
+    </div>
+    <div class="col-lg-3">{{book.isbn}}</div>
+    <div class="col-lg-3">{{book.title}}</div>
+    <div class="col-lg-3">{{book.status}}</div>
+  </div>
+</div>

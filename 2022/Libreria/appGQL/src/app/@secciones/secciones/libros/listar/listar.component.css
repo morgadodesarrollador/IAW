@@ -1,0 +1,31 @@
+
+div.container {
+  padding-top:10px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+div.row {
+  background-color: rgba(0,0,0,.1);
+}
+div.header{
+  background-color: rgba(0,0,0,.7) !important;
+  color: whitesmoke;
+}
+
+div.col-lg-3 {
+  border: 1px solid rgba(0,0,0,.2);
+  padding: 5px;
+  display: flex !important;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+div.col-lg-3 img{
+  display: block;
+  margin: 0 auto;
+  height: 80px;
+  border-radius: 10px;
+}

@@ -1,14 +1,4 @@
-
-<div *ngIf="loading">
-  Loding ...
+<div class="container-fluid">
+  <app-header></app-header>
+  <app-main></app-main>
 </div>
-<ul>
-  <li *ngFor="let book of books">
-    {{ book.title }}
-    <ul *ngIf="book.byPeoplesBuy">
-      <li *ngFor="let people of book.byPeoplesBuy">
-        {{ people.name }} - {{ people.email }}
-    </ul>
-  </li>
-</ul>
-<router-outlet></router-outlet>

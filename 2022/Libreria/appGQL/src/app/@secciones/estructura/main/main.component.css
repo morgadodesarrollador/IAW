@@ -1,0 +1,17 @@
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  grid-template-areas:
+     "menu  cuerpo";
+}
+
+app-main-menu {
+  grid-area: menu;
+  height:300px;
+  background-color: rgba(0,0,0,.3);
+}
+app-main-cuerpo {
+  grid-area:cuerpo;
+  min-height: 500px;
+}

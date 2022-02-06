@@ -13,6 +13,6 @@ export interface IBook {
   thumbnailUrl?: string;
   shortDescription?: string;
   longDescription?: string;
-  status: enumStatus;
+  status?: enumStatus;
   authors: Array<string>;
 }

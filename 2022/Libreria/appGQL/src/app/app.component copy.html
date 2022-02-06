@@ -1,0 +1,14 @@
+
+<div *ngIf="loading">
+  Loding ...
+</div>
+<ul>
+  <li *ngFor="let book of books">
+    {{ book.title }}
+    <ul *ngIf="book.byPeoplesBuy">
+      <li *ngFor="let people of book.byPeoplesBuy">
+        {{ people.name }} - {{ people.email }}
+    </ul>
+  </li>
+</ul>
+<router-outlet></router-outlet>
