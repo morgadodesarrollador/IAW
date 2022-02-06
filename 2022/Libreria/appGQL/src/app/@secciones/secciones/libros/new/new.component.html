@@ -1,0 +1,26 @@
+<div class="container">
+
+<p>Nuevo Libro</p>
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+    <label for="name" class="form-label"> Id: </label>
+    <input id="id" type="text" formControlName="id" class="form-control">
+    <br/>
+
+    <label for="title" class="form-label"> Titulo: </label>
+    <textarea id="title" type="text" class="form-control" formControlName="title" rows="3" cols="20"></textarea>
+    <br/>
+
+    <label for="isbn" class="form-label"> ISBN: </label>
+    <input id="isbn" type="text" class="form-control" formControlName="isbn">
+    <br/>
+
+    <label for="pageCount" class="form-label"> Numero de páginas: </label>
+    <input id="pageCount" type="number" class="form-control" formControlName="pageCount">
+    <br/>
+
+    <button type="submit" >Submit</button>
+
+  </form>
+</div>
