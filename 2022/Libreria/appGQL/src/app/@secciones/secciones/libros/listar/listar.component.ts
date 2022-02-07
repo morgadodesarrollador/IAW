@@ -12,10 +12,16 @@ export class ListarComponent implements OnInit {
   constructor(private librosService: LibrosService) { }
 
   ngOnInit(): void {
-    this.librosService.list()
-      .subscribe(result => {
+    this.librosService.list(true)
+      .subscribe( (result) => {
+        console.log(result);
         this.booklist = result;
       })
+  }
+
+  detalle(id:string){
+    console.log(id);
+    
   }
 
 }

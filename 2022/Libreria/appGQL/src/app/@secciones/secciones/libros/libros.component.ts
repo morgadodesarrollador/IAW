@@ -9,14 +9,10 @@ import { LibrosService } from './libros.service';
 })
 export class LibrosComponent implements OnInit {
   booklist: Array<IBook> = [];
-  constructor(private librosService: LibrosService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.librosService.list()
-      .subscribe( (result) => {
-        console.log(result);
-        this.booklist = result;
-      })
+
   }
 
 }

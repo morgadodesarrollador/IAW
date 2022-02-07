@@ -1,11 +1,18 @@
 
 <div *ngIf="book" class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{book.thumbnailUrl}}" alt="Card image cap">
+  <a routerLink="/books/detail/{{book.id}}">
+    <img class="card-img-top" src="{{book.thumbnailUrl}}" alt="Card image cap">
+  </a>
   <div class="card-body">
     <h5 class="card-title">{{ book.title }}</h5>
     <p class="card-text">
       Isbn: {{book.isbn}} <br>
       páginas:{{book.pageCount}} </p>
+    <div>Personas que lo han comprado
+      <p *ngFor="let people of book.byPeoplesBuy">
+        {{ people.name}}
+      </p>
+    </div>
     <a href="#" class="btn btn-primary">{{ book.status }}</a>
   </div>
 </div>

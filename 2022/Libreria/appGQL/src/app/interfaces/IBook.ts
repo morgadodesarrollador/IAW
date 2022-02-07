@@ -1,3 +1,5 @@
+import { IPeople } from "./IPeople";
+
 enum enumStatus {
   PUBLISH,
   UNPUBLISH
@@ -15,4 +17,5 @@ export interface IBook {
   longDescription?: string;
   status?: enumStatus;
   authors: Array<string>;
+  byPeoplesBuy?: IPeople[]
 }

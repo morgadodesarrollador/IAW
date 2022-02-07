@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DocumentNode } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { map } from 'rxjs/internal/operators/map';
+import { IBook } from 'src/app/interfaces/IBook';
 
 @Injectable({
   providedIn: 'root'
@@ -15,24 +16,22 @@ export class ApiService {
     * context --> contexto, el token jwt...
   */
   protected query(GQLquery: DocumentNode, GQLvariables: object={}, GQLcontext: object = {}){
-    console.log(GQLvariables);
     return this.apollo.watchQuery({
       query: GQLquery,
       variables: GQLvariables,
       context: GQLcontext,
       fetchPolicy: 'network-only'
     }).valueChanges.pipe(map ((result) => {
-      console.log(result);
       return result.data
     }));
   }
 
   //protected mutation(mutation: DocumentNode, variables: object={}, GQLcontext: object = {}){
-    protected mutation(mutation: DocumentNode, GQLvariables: object={}, context: object = {}){
-    console.log(GQLvariables);
+  protected mutation(mutation: DocumentNode, book:IBook, context: object = {}){
+    console.log(book);
     return this.apollo.mutate({
       mutation,
-      variables: GQLvariables ,
+      variables: { book },
       context,
     }).pipe(map ((result:any) => {
       return result.data

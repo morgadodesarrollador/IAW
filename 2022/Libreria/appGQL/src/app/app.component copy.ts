@@ -20,9 +20,19 @@ export class AppComponent implements OnInit, OnDestroy  {
 
   ngOnInit(): void {
 
+    this.querySubscription = this.apollo.watchQuery<any>({
+        query: GET_BOOKLIST
+      })
+      .valueChanges
+      .subscribe( (result: any ) => {
+        console.log(result);
+        this.loading = false;
+        this.error = result.error;
+        this.books = (result?.data?.bookList as IBook[]);
+      });
   }
   ngOnDestroy() {
-
+      this.querySubscription.unsubscribe();
   }
 
 }

@@ -2,6 +2,6 @@
   <h6>Listado de Libros</h6>
 
   <div id="cards" >
-    <app-card [book]="book" *ngFor="let book of booklist"> </app-card> -->
+    <app-card (click) = "detalle(book.id)" [book]="book" *ngFor="let book of booklist"> </app-card> -->
   </div>
 </div>

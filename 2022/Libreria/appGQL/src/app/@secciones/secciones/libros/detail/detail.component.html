@@ -1,1 +1,26 @@
-<p>detail works!</p>
+<div class="container">
+
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4">Page Heading
+    <small>Book  {{ id }}</small>
+  </h1>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-5">
+      <img class="img-fluid" src="{{ book.thumbnailUrl }}" alt="">
+    </div>
+
+    <div class="col-md-7" *ngIf="book">
+      <h3 class="my-3">{{ book.title }}</h3>
+      <p>{{ book.shortDescription }}</p>
+      <h3 class="my-3">{{ book.isbn }}</h3>
+      <ul>
+        <li *ngFor="let people of book.byPeoplesBuy">{{people.name}}</li>
+
+      </ul>
+    </div>
+
+  </div>
+  </div>
