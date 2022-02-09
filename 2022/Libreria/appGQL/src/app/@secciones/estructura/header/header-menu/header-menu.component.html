@@ -11,8 +11,7 @@
           <a class="nav-link" [routerLink]="['/books', {outlets: {primary: ['home'] }}]">Books</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/people">People</a>
-
+          <a class="nav-link" [routerLink]="['/people', { outlets: { primary: ['home']}}]">People</a>
         </li>
 
       </ul>

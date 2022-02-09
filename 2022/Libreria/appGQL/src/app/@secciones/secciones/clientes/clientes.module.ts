@@ -6,7 +6,7 @@ import { ClientesComponent } from './clientes.component';
 import { ListarComponent } from './listar/listar.component';
 import { NewComponent } from './new/new.component';
 import { DetailComponent } from './detail/detail.component';
-import { MenuComponent } from './menu/menu.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { MenuComponent } from './menu/menu.component';
     ListarComponent,
     NewComponent,
     DetailComponent,
-    MenuComponent
+    SidebarComponent
   ],
   imports: [
     CommonModule,
