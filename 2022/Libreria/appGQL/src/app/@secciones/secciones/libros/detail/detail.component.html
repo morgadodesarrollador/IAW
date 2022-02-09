@@ -9,7 +9,7 @@
   <div class="row">
 
     <div class="col-md-5">
-      <img class="img-fluid" src="{{ book.thumbnailUrl }}" alt="">
+      <img class="img-fluid" [src]="book.thumbnailUrl" alt="">
     </div>
 
     <div class="col-md-7" *ngIf="book">
@@ -24,3 +24,5 @@
 
   </div>
   </div>
+
+

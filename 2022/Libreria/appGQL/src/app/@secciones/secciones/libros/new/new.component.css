@@ -2,4 +2,21 @@
 
 div.container {
   width: 80%;
+  padding-top: 20px;
+}
+
+label{
+  color: blue;
+}
+
+select.custom-select {
+  padding: 5px;
+  display: block;;
+  height: 80%;
+  width: 100%;
+  background-color: rgba(0,0,0,.2);
+  font-size: 14px;;
+}
+p#autores span:nth-child(1){
+  color: red;
 }

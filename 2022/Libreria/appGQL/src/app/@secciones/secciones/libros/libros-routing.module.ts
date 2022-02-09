@@ -4,12 +4,15 @@ import { DetailComponent } from './detail/detail.component';
 import { LibrosComponent } from './libros.component';
 import { ListarComponent } from './listar/listar.component';
 import { NewComponent } from './new/new.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
-  { path: '', component: LibrosComponent },
-  { path: 'listar', component: ListarComponent },
-  { path: 'new', component: NewComponent },
-  { path: 'detail/:id', component: DetailComponent },
+  //{ path: '', component: LibrosComponent },
+  { path: '', component:SidebarComponent, outlet: 'menus' },
+  { path: 'home', component:LibrosComponent, outlet: 'primary' },
+  { path: 'listar', component: ListarComponent, outlet: 'primary' },
+  { path: 'new', component: NewComponent, outlet: 'primary' },
+  { path: 'detail/:id', component: DetailComponent, outlet: 'primary' },
 
 
 ];

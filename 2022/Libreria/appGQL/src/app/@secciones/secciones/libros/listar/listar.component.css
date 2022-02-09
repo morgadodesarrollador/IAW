@@ -8,11 +8,14 @@ div.container {
 div#cards {
   display: flex;
   flex-flow: row wrap;
-  justify-content:space-around
+  justify-content:flex-start; /*contenido a la izquierda*/
+  align-items: stretch; /*todos los elementos se igualan al mas alto*/
 }
+
 div#cards app-card {
-  width:30%;
-  padding: 10px;
+  padding: 10px 10px;
+  width:33%;
+  height:100%;
 }
 
 

@@ -10,6 +10,8 @@ import { IBook } from '../../../interfaces/IBook';
 })
 export class CardComponent implements OnInit {
   @Input() book: IBook | undefined;
+  @Input() titulo: string = '';
+  @Input() foto: string = '';
   constructor() { }
 
   ngOnInit(): void {

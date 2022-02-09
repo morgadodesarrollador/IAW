@@ -1,26 +1,75 @@
 <div class="container">
 
-<p>Nuevo Libro</p>
+  <h4>Nuevo Libro</h4>
 
   <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div class="row g-3">
+      <div class="col-1">
+        <label for="name" class="form-label"> Id: </label>
+        <input id="id" type="text" formControlName="id" class="form-control">
+      </div>
+      <div class="col-9">
+        <label for="title" class="form-label"> Titulo: </label>
+        <input id="title" type="text" class="form-control" formControlName="title" rows="1" cols="10">
+      </div>
+      <div class="col-2">
+        <label for="isbn" class="form-label"> ISBN: </label>
+        <input id="isbn" type="text" class="form-control" formControlName="isbn">
+      </div>
+      <div class="col-2">
+          <label for="status" class="form-label">Status</label>
+          <select id="inputState" class="form-select" formControlName="status">
+            <option selected>Choose...</option>
+            <option>PUBLISH</option>
+            <option>UNPUBLISH</option>
+          </select>
+      </div>
+      <div class="col-2">
+          <label for="pageCount" class="form-label"> Páginas </label>
+          <input id="isbn" type="number" class="form-control" formControlName="pageCount">
+      </div>
+      <div class="col-3">
+          <label for="PageCount" class="form-label"> Publicación </label>
+          <input id="publishedDate" type="date" class="form-control" formControlName="publishedDate">
+      </div>
+      <div class="col-5">
+        <label for="thumbnailUrl" class="form-label"> Imagen </label>
+        <input id="publishedDate" type="text" class="form-control" formControlName="thumbnailUrl">
+    </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-8">
+            <div>
+              <label for="exampleFormControlTextarea1" class="form-label">Descripción Corta</label>
+              <textarea class="form-control" aria-label="With textarea" formControlName="shortDescription"></textarea>
+            </div>
+            <div>
+              <label for="exampleFormControlTextarea1" class="form-label">Descripción Larga</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="longDescription"></textarea>
+            </div>
+          </div>
+          <div class="col-4">
+            <h5 for="exampleDataList" class="form-label">Autores</h5>
+            <select class="custom-select" multiple [(ngModel)]="seleccionados"  formControlName="authors">
+              <option selected>Open this select menu</option>
+              <option [value]="item" *ngFor="let item of autores">{{item}}</option>
+            </select>
+            <p id="autores"><span>Autores: </span>
+              <span *ngFor="let item of seleccionados"> {{ item }}, </span>
+              </p>
+          </div>
+        </div>
 
-    <label for="name" class="form-label"> Id: </label>
-    <input id="id" type="text" formControlName="id" class="form-control">
-    <br/>
+      </div>
 
-    <label for="title" class="form-label"> Titulo: </label>
-    <textarea id="title" type="text" class="form-control" formControlName="title" rows="3" cols="20"></textarea>
-    <br/>
 
-    <label for="isbn" class="form-label"> ISBN: </label>
-    <input id="isbn" type="text" class="form-control" formControlName="isbn">
-    <br/>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+    </div>
+  </div>
 
-    <label for="pageCount" class="form-label"> Numero de páginas: </label>
-    <input id="pageCount" type="number" class="form-control" formControlName="pageCount">
-    <br/>
-
-    <button type="submit" >Submit</button>
 
   </form>
 </div>
+
+

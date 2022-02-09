@@ -6,11 +6,11 @@ export const BOOK_OBJECT = gql`
     title
     isbn
     pageCount
-    pageCount
     publishedDate
     thumbnailUrl
     shortDescription
     longDescription
+    status
     authors
     byPeoplesBuy  {
       id

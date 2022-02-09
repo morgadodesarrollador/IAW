@@ -8,6 +8,7 @@ import { DetailComponent } from './detail/detail.component';
 import { NewComponent } from './new/new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from '../../shared/shared.module';
     LibrosComponent,
     ListarComponent,
     DetailComponent,
-    NewComponent
+    NewComponent,
+    SidebarComponent
   ],
   imports: [
     ReactiveFormsModule,
