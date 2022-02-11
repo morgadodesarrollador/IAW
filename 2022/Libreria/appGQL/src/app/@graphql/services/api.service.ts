@@ -8,21 +8,23 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class ApiService {
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) {
+    console.log('super');
+   }
   /* *** Creamos una QUERY genérica en el servicio. Para todas las querys habrá q pasar su gql correspondiente
     * DocumentNode --> la consulta gql.
     * variables--> Argumentos de la consulta
     * context --> contexto, el token jwt...
   */
   protected query(GQLquery: DocumentNode, GQLvariables: object={}, GQLcontext: object = {}){
-    console.log(GQLvariables);
+    console.log(GQLquery, GQLvariables, GQLcontext );
     return this.apollo.watchQuery({
       query: GQLquery,
       variables: GQLvariables,
       context: GQLcontext,
       fetchPolicy: 'network-only'
     }).valueChanges.pipe(map ((result) => {
-      console.log(result);
+      console.log("ioajflskdfa");
       return result.data
     }));
   }

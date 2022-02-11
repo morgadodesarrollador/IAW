@@ -9,5 +9,5 @@ export interface IPeople {
     github?: string;
     twitter?: string;
     books: Array<string>;
-    libros: Array<IBook>;
+    libros?: Array<IBook>;
   }

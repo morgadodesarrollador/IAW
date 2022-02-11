@@ -18,10 +18,11 @@ export class ListarComponent implements OnInit {
         this.booklist = result;
       })
   }
+  
 
   detalle(id:string){
     console.log(id);
-    
+
   }
 
 }

@@ -12,8 +12,6 @@ const routes: Routes = [
   { path: 'listar', component: ListarComponent, outlet: 'primary' },
   { path: 'new', component: NewComponent, outlet: 'primary' },
   { path: 'detail/:id', component: DetailComponent, outlet: 'primary' },
-
-
 ];
 
 @NgModule({
